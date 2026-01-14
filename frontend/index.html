@@ -12,15 +12,25 @@
   </head>
   <body>
     <!-- Fixed Header (Top Player) -->
-    <header class="main-header" id="mainHeader">
         <div class="header-logo">
-            <img src="https://raw.githubusercontent.com/RZSISTEMA/one-habbo/main/img/logo_transparente-removebg-preview.png" alt="One Habbo" style="height: 50px;">
+            <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true" alt="One Habbo" style="height: 50px;">
         </div>
         <div class="header-player">
-             <div class="header-controls">
-                <button onclick="toggleRadio()"><i class="fas fa-play" id="headerPlayIcon"></i></button>
+             <div class="header-avatar">
+                <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=s" alt="DJ">
              </div>
-             <span style="font-size: 0.9rem; font-weight: bold;">One Hits</span>
+             <div class="header-info">
+                 <span class="header-program">One Hits</span>
+                 <span class="header-dj">DJ DJ_Richard</span>
+             </div>
+             <div class="header-controls-container">
+                 <div class="header-listeners">
+                     <i class="fas fa-headphones"></i> 128
+                 </div>
+                 <button class="header-play-btn" onclick="toggleRadio()">
+                     <i class="fas fa-play" id="headerPlayIcon"></i>
+                 </button>
+             </div>
         </div>
         <button class="theme-toggle" onclick="toggleTheme()">
             <i class="fas fa-moon" id="themeIcon"></i>
