@@ -1,8 +1,12 @@
 # One Habbo - Fan Site Oficial
 
-**Desenvolvido por:** RZSISTEMA
-**Domínio:** onehabbo.com.br
-**Data de Início/Compra do Domínio:** 13/01/2026
+**Equipe de Desenvolvimento:**
+
+- [@RZSISTEMAs](https://github.com/RZSISTEMAs)
+- [@alissonzika15](https://github.com/alissonzika15)
+- [@DevFirex](https://github.com/DevFirex)
+  **Domínio:** onehabbo.com.br
+  **Data de Início/Compra do Domínio:** 13/01/2026
 
 ---
 
