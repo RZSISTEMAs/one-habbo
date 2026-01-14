@@ -68,33 +68,75 @@
           background: rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(15px);
           border: 1px solid rgba(255, 255, 255, 0.2);
-          padding: 1rem 2rem;
-          border-radius: 50px;
+          padding: 1.5rem 2.5rem;
+          border-radius: 20px;
           display: flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 2rem;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
           z-index: 100;
           width: 90%;
-          max-width: 500px;
+          max-width: 700px; /* Increased size */
           justify-content: space-between;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .radio-player.minimized {
+          width: 60px;
+          padding: 0;
+          height: 60px;
+          border-radius: 50%;
+          overflow: hidden;
+          justify-content: center;
+          cursor: pointer;
+      }
+
+      .radio-player.minimized > *:not(.toggle-btn) {
+          display: none; /* Hide content when minimized */
+      }
+      
+      .radio-player.minimized .toggle-btn {
+          position: static;
+          transform: none;
+          font-size: 1.5rem;
+      }
+
+      .toggle-btn {
+          position: absolute;
+          top: -15px;
+          right: 20px;
+          background: #2e66ff;
+          color: white;
+          border: none;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+          z-index: 101;
       }
 
       .dj-avatar {
-          width: 64px;
-          height: 64px;
+          width: 80px; /* Larger avatar */
+          height: 80px;
+          min-width: 80px;
           background: rgba(255, 255, 255, 0.1);
           border-radius: 50%;
           overflow: hidden;
-          border: 2px solid #2e66ff;
+          border: 3px solid #2e66ff;
           position: relative;
       }
 
       .dj-avatar img {
           position: absolute;
-          top: -10px;
+          top: -15px;
           left: 50%;
           transform: translateX(-50%);
+          width: 100%;
+          height: auto;
       }
 
       .player-info {
@@ -107,28 +149,29 @@
       .program-name {
           font-weight: bold;
           color: #fff;
-          font-size: 1rem;
+          font-size: 1.2rem; /* Larger text */
+          margin-bottom: 0.2rem;
       }
 
       .dj-name {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           color: #00d2ff;
       }
-
+      
       .controls {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 1.5rem;
       }
 
       .play-btn {
           background: linear-gradient(135deg, #2e66ff, #9b51e0);
           border: none;
-          width: 45px;
-          height: 45px;
+          width: 55px; /* Larger button */
+          height: 55px;
           border-radius: 50%;
           color: white;
-          font-size: 1.2rem;
+          font-size: 1.4rem;
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -142,7 +185,7 @@
       }
 
       .volume-slider {
-          width: 80px;
+          width: 100px;
           accent-color: #2e66ff;
       }
 
@@ -150,10 +193,10 @@
           background: rgba(255, 255, 255, 0.1);
           border: 1px solid rgba(255, 255, 255, 0.3);
           color: #fff;
-          padding: 0.5rem 1rem;
+          padding: 0.6rem 1.2rem;
           border-radius: 20px;
           cursor: pointer;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           transition: all 0.3s;
           display: flex;
           align-items: center;
@@ -169,11 +212,11 @@
       .room-btn {
           background: rgba(255, 255, 255, 0.1);
           border: none;
-          width: 35px;
-          height: 35px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           color: white;
-          font-size: 1rem;
+          font-size: 1.1rem;
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -188,17 +231,24 @@
       }
 
       .listeners-count {
+          position: absolute;
+          top: -12px;
+          left: 30px;
+          background: #0f172a;
+          border: 1px solid #2e66ff;
+          padding: 0.2rem 0.8rem;
+          border-radius: 12px;
           font-size: 0.75rem;
-          color: #94a3b8;
+          color: #fff;
           display: flex;
           align-items: center;
-          gap: 0.3rem;
-          margin-top: 0.2rem;
+          gap: 0.4rem;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
       .listeners-count i {
           font-size: 0.7rem;
-          color: #2e66ff;
+          color: #00d2ff;
       }
 
       a {
@@ -233,18 +283,23 @@
     </div>
 
     <!-- Radio Player -->
-    <div class="radio-player">
+    <div class="radio-player" id="radioPlayer">
+        <button class="toggle-btn" onclick="togglePlayerView()" title="Minimizar/Maximizar">
+            <i class="fas fa-chevron-down" id="toggleIcon"></i>
+        </button>
+
+        <div class="listeners-count"><i class="fas fa-headphones"></i> 128</div>
+
         <div class="dj-avatar">
-            <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav" alt="Avatar DJ">
+            <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=l" alt="Avatar DJ">
         </div>
         <div class="player-info">
             <span class="program-name">One Hits</span>
             <span class="dj-name">DJ DJ_Richard</span>
-            <span class="listeners-count"><i class="fas fa-headphones"></i> 128 Ouvintes</span>
         </div>
         
         <button class="request-btn" onclick="requestSong()">
-            <i class="fas fa-music"></i> Pedir Música
+            <i class="fas fa-music"></i> <span class="btn-text">Pedir</span>
         </button>
 
         <div class="controls">
@@ -263,6 +318,8 @@
         const audio = document.getElementById('radioStream');
         const playBtn = document.getElementById('playBtn');
         const icon = playBtn.querySelector('i');
+        const player = document.getElementById('radioPlayer');
+        const toggleIcon = document.getElementById('toggleIcon');
         let isPlaying = false;
 
         function toggleRadio() {
@@ -285,6 +342,17 @@
 
         function requestSong() {
             alert('Sistema de pedidos em desenvolvimento! Em breve você poderá pedir suas músicas favoritas.');
+        }
+
+        function togglePlayerView() {
+            player.classList.toggle('minimized');
+            if (player.classList.contains('minimized')) {
+                toggleIcon.classList.remove('fa-chevron-down');
+                toggleIcon.classList.add('fa-radio'); // Show radio icon when minimized
+            } else {
+                toggleIcon.classList.remove('fa-radio');
+                toggleIcon.classList.add('fa-chevron-down');
+            }
         }
     </script>
   </body>
