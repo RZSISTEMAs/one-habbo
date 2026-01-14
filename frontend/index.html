@@ -146,6 +146,26 @@
           accent-color: #2e66ff;
       }
 
+      .request-btn {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: #fff;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          cursor: pointer;
+          font-size: 0.8rem;
+          transition: all 0.3s;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          text-decoration: none;
+      }
+
+      .request-btn:hover {
+          background: rgba(46, 102, 255, 0.3);
+          border-color: #2e66ff;
+      }
+
       a {
         color: #00d2ff;
         text-decoration: none;
@@ -180,12 +200,17 @@
     <!-- Radio Player -->
     <div class="radio-player">
         <div class="dj-avatar">
-            <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=RZSISTEMA&direction=3&head_direction=3&gesture=sml&action=wav" alt="Avatar DJ">
+            <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav" alt="Avatar DJ">
         </div>
         <div class="player-info">
             <span class="program-name">One Hits</span>
-            <span class="dj-name">DJ RZSISTEMA</span>
+            <span class="dj-name">DJ DJ_Richard</span>
         </div>
+        
+        <button class="request-btn" onclick="requestSong()">
+            <i class="fas fa-music"></i> Pedir Música
+        </button>
+
         <div class="controls">
             <button class="play-btn" id="playBtn" onclick="toggleRadio()">
                 <i class="fas fa-play"></i>
@@ -217,6 +242,10 @@
 
         function setVolume(val) {
             audio.volume = val;
+        }
+
+        function requestSong() {
+            alert('Sistema de pedidos em desenvolvimento! Em breve você poderá pedir suas músicas favoritas.');
         }
     </script>
   </body>
