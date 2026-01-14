@@ -48,8 +48,8 @@ body {
 
 .cloud-logo {
     position: absolute;
-    right: 10%; /* Fixed on the right */
-    height: 160px; /* Much bigger */
+    right: 5%; /* Adjusted right position */
+    height: 220px; /* Significantly increased size */
     object-fit: contain;
     z-index: 2;
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
@@ -68,21 +68,21 @@ body {
 }
 
 /* Header Styles */
-/* Header Styles */
 .main-header {
-    position: relative; /* Changed from fixed */
+    position: relative;
     width: 100%;
     height: 80px;
     background: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Keeps content spaced */
     padding: 0 5%;
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
 }
+/* Removed unused header-right-side and header-logo styles */
 
 /* ... (Logo and Player styles remain same, skipped for brevity in tool call if not changing) ... */
 
