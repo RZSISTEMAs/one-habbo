@@ -11,31 +11,23 @@
     />
   </head>
   <body>
-    <!-- Fixed Header (Top Player) -->
-    <header class="main-header" id="mainHeader">
-        <div class="header-player">
-             <div class="header-avatar">
-                <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=s" alt="DJ">
-             </div>
-             <div class="header-info">
-                 <span class="header-program">One Hits</span>
-                 <span class="header-dj">DJ DJ_Richard</span>
-             </div>
-             <div class="header-controls-container">
-                 <div class="header-listeners">
-                     <i class="fas fa-headphones"></i> 128
-                 </div>
-                 <button class="header-play-btn" onclick="toggleRadio()">
-                     <i class="fas fa-play" id="headerPlayIcon"></i>
-                 </button>
-             </div>
-        </div>
-        <!-- Right side removed (Logo and Toggle) -->
-    </header>
-
-    <!-- Cloud Background Section -->
+    <!-- Cloud Header Section (Replaces Main Header) -->
     <div class="cloud-section">
-        <span class="cloud-text">☁️ Espaço para Nuvens ☁️</span>
+        <!-- Left: DJ Player & Info -->
+        <div class="cloud-player-left">
+            <div class="cloud-avatar">
+                <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="DJ Richard">
+            </div>
+            <div class="cloud-info-box">
+                <span class="info-program">One Hits</span>
+                <span class="info-dj">DJ DJ_Richard</span>
+                <div class="info-stats">
+                    <span><i class="fas fa-headphones"></i> 128 ouvintes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Large Logo -->
         <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true" alt="One Habbo Logo" class="cloud-logo">
     </div>
 

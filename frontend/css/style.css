@@ -26,63 +26,87 @@ body {
     padding-top: 0; /* Removed fixed header padding */
 }
 
-/* Cloud Section Placeholder */
+/* Cloud Section */
 .cloud-section {
     width: 100%;
-    height: 180px; /* Increased height for larger logo */
+    height: 250px; /* Increased height for content */
     background: linear-gradient(180deg, var(--bg-color) 0%, rgba(59, 130, 246, 0.2) 100%);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Spread content left/right */
     position: relative;
-    overflow: visible; /* Allow logo to pop out if needed */
+    overflow: visible;
+    padding: 0 10%; /* Center content limits */
+    box-sizing: border-box;
 }
 
-.cloud-text {
+.cloud-player-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 5;
+}
+
+.cloud-avatar {
+    width: 80px;
+    height: 80px;
+    /* No circle or border requested, just the waving avatar? User said "showing the player DJ_Richard waving". 
+       Usually Habbo avatars look good standing. Let's keep it simple. */
+    position: relative;
+}
+
+.cloud-avatar img {
+    height: 120px; /* Make it stand out */
+    margin-top: -20px;
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.3));
+}
+
+.cloud-info-box {
+    background: rgba(30, 41, 59, 0.3); /* 30% opacity dark */
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-color);
-    opacity: 0.5;
-    font-size: 1.5rem;
-    font-weight: bold;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 150px;
+}
+
+[data-theme="light"] .cloud-info-box {
+    background: rgba(255, 255, 255, 0.3); /* Light mode version */
+    color: #000;
+}
+
+.info-program {
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.info-dj {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.info-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 
 .cloud-logo {
-    position: absolute;
-    right: 5%; /* Adjusted right position */
-    height: 220px; /* Significantly increased size */
+    position: relative; /* Changed from absolute to flow with flexbox space-between */
+    right: auto;
+    height: 220px;
     object-fit: contain;
     z-index: 2;
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
     animation: floatLogo 3s ease-in-out infinite;
 }
-
-@keyframes floatLogo {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
-
-/* Remove pseudo-element since we added real element */
-.cloud-section::after {
-    content: none;
-}
-
-/* Header Styles */
-.main-header {
-    position: relative;
-    width: 100%;
-    height: 80px;
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Keeps content spaced */
-    padding: 0 5%;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-}
-/* Removed unused header-right-side and header-logo styles */
 
 /* ... (Logo and Player styles remain same, skipped for brevity in tool call if not changing) ... */
 
