@@ -1,14 +1,11 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0f172a;
-  color: #fff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 200vh;
+    padding-top: 130px; /* Header (70px) + Navbar (60px) */
 }
 
 .container {
