@@ -166,6 +166,41 @@
           border-color: #2e66ff;
       }
 
+      .room-btn {
+          background: rgba(255, 255, 255, 0.1);
+          border: none;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          color: white;
+          font-size: 1rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s;
+          text-decoration: none;
+      }
+
+      .room-btn:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: translateY(-2px);
+      }
+
+      .listeners-count {
+          font-size: 0.75rem;
+          color: #94a3b8;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          margin-top: 0.2rem;
+      }
+
+      .listeners-count i {
+          font-size: 0.7rem;
+          color: #2e66ff;
+      }
+
       a {
         color: #00d2ff;
         text-decoration: none;
@@ -205,6 +240,7 @@
         <div class="player-info">
             <span class="program-name">One Hits</span>
             <span class="dj-name">DJ DJ_Richard</span>
+            <span class="listeners-count"><i class="fas fa-headphones"></i> 128 Ouvintes</span>
         </div>
         
         <button class="request-btn" onclick="requestSong()">
@@ -212,6 +248,9 @@
         </button>
 
         <div class="controls">
+            <a href="https://www.habbo.com.br/room/12345678" target="_blank" class="room-btn" title="Ir para o Quarto">
+                <i class="fas fa-door-open"></i>
+            </a>
             <button class="play-btn" id="playBtn" onclick="toggleRadio()">
                 <i class="fas fa-play"></i>
             </button>
