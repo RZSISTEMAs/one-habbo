@@ -40,3 +40,34 @@ Este site foi criado para a comunidade, mantendo um ambiente seguro, divertido e
 O **One Habbo** visa ser uma referência em conteúdo, notícias e entretenimento para a comunidade Luso-Brasileira do Habbo Hotel, trazendo inovação e qualidade técnica garantida pela **RZSISTEMA**.
 
 > "Sua participação na criação de um Fã Site não constitui um contrato de trabalho, parceria ou joint venture entre você e o Habbo." - _Política de Fã Sites_
+
+---
+
+## 🚀 Guia de Colaboração (Git)
+
+Como manter o projeto atualizado e enviar suas modificações.
+
+### ⬇️ Baixar Atualizações (Pull)
+
+Sempre rode este comando antes de começar a trabalhar para garantir que você tem a versão mais recente do código:
+
+```bash
+git pull
+```
+
+### ⬆️ Enviar Modificações (Push)
+
+Após fazer suas alterações, envie para o GitHub seguindo estes 3 passos:
+
+1.  **Adicionar arquivos:**
+    ```bash
+    git add .
+    ```
+2.  **Salvar alterações (Commit):**
+    ```bash
+    git commit -m "Escreva aqui o que você mudou"
+    ```
+3.  **Enviar para o GitHub (Push):**
+    ```bash
+    git push
+    ```
