@@ -4,300 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>One Habbo - Em Breve</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #0f172a;
-        color: #fff;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .container {
-        text-align: center;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        padding: 3rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        max-width: 600px;
-        width: 90%;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      }
-
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #2e66ff, #9b51e0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      p {
-        font-size: 1.2rem;
-        color: #94a3b8;
-        margin-bottom: 2rem;
-      }
-
-      .logo {
-          width: 350px;
-          height: auto;
-          margin-bottom: 2rem;
-          filter: drop-shadow(0 0 10px rgba(46, 102, 255, 0.5));
-      }
-
-      .footer {
-        margin-top: 2rem;
-        font-size: 0.8rem;
-        color: #64748b;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1rem;
-      }
-
-      /* Radio Player Styles */
-      .radio-player {
-          position: fixed;
-          bottom: 2rem;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(15px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          padding: 1.5rem 2.5rem;
-          border-radius: 20px;
-          display: flex;
-          align-items: center;
-          gap: 2rem;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-          z-index: 100;
-          width: 90%;
-          max-width: 700px; /* Increased size */
-          justify-content: space-between;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .radio-player.minimized {
-          width: 60px;
-          padding: 0;
-          height: 60px;
-          border-radius: 50%;
-          overflow: hidden;
-          justify-content: center;
-          cursor: pointer;
-          left: auto; /* Reset left centering */
-          right: 20px; /* Dock to right */
-          transform: none; /* Reset transform */
-      }
-
-      .radio-player.minimized > *:not(.toggle-btn) {
-          display: none; /* Hide content when minimized */
-      }
-      
-      .radio-player.minimized .toggle-btn {
-          position: static;
-          transform: none;
-          font-size: 1.5rem;
-      }
-
-      .toggle-btn {
-          position: absolute;
-          top: -15px;
-          right: 20px;
-          background: #2e66ff;
-          color: white;
-          border: none;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-          z-index: 101;
-      }
-
-      .dj-avatar {
-          width: 80px; /* Larger avatar */
-          height: 80px;
-          min-width: 80px;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-          overflow: hidden;
-          border: 3px solid #2e66ff;
-          position: relative;
-      }
-
-      .dj-avatar img {
-          position: absolute;
-          top: -15px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100%;
-          height: auto;
-      }
-
-      .player-info {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          flex-grow: 1;
-      }
-
-      .program-name {
-          font-weight: bold;
-          color: #fff;
-          font-size: 1.2rem; /* Larger text */
-          margin-bottom: 0.2rem;
-      }
-
-      .dj-name {
-          font-size: 0.9rem;
-          color: #00d2ff;
-      }
-      
-      .vote-buttons {
-          display: flex;
-          gap: 0.5rem;
-          margin-top: 0.3rem;
-      }
-
-      .vote-btn {
-          background: rgba(255, 255, 255, 0.1);
-          border: none;
-          color: #94a3b8;
-          font-size: 0.8rem;
-          cursor: pointer;
-          padding: 2px 6px;
-          border-radius: 5px;
-          transition: all 0.2s;
-          display: flex;
-          align-items: center;
-          gap: 4px;
-      }
-
-      .vote-btn:hover {
-          color: #fff;
-          background: rgba(255, 255, 255, 0.2);
-      }
-
-      .vote-btn.liked {
-          color: #10b981; /* Green */
-      }
-
-      .vote-btn.disliked {
-          color: #ef4444; /* Red */
-      }
-
-      .controls {
-          display: flex;
-          align-items: center;
-          gap: 1.5rem;
-      }
-
-      .play-btn {
-          background: linear-gradient(135deg, #2e66ff, #9b51e0);
-          border: none;
-          width: 55px; /* Larger button */
-          height: 55px;
-          border-radius: 50%;
-          color: white;
-          font-size: 1.4rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 15px rgba(46, 102, 255, 0.4);
-          transition: transform 0.2s;
-      }
-
-      .play-btn:hover {
-          transform: scale(1.1);
-      }
-
-      .volume-slider {
-          width: 100px;
-          accent-color: #2e66ff;
-      }
-
-      .request-btn {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          color: #fff;
-          padding: 0.6rem 1.2rem;
-          border-radius: 20px;
-          cursor: pointer;
-          font-size: 0.9rem;
-          transition: all 0.3s;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          text-decoration: none;
-      }
-
-      .request-btn:hover {
-          background: rgba(46, 102, 255, 0.3);
-          border-color: #2e66ff;
-      }
-
-      .room-btn {
-          background: rgba(255, 255, 255, 0.1);
-          border: none;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          color: white;
-          font-size: 1.1rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s;
-          text-decoration: none;
-      }
-
-      .room-btn:hover {
-          background: rgba(255, 255, 255, 0.3);
-          transform: translateY(-2px);
-      }
-
-      .listeners-count {
-          position: absolute;
-          top: -12px;
-          left: 30px;
-          background: #0f172a;
-          border: 1px solid #2e66ff;
-          padding: 0.2rem 0.8rem;
-          border-radius: 12px;
-          font-size: 0.75rem;
-          color: #fff;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      }
-
-      .listeners-count i {
-          font-size: 0.7rem;
-          color: #00d2ff;
-      }
-
-      a {
-        color: #00d2ff;
-        text-decoration: none;
-      }
-      }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
-      <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true" alt="One Habbo Logo" class="logo">
+      <img
+        src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true"
+        alt="One Habbo Logo"
+        class="logo"
+      />
       <p>
         Estamos em manutenção para trazer o melhor conteúdo do Habbo Hotel para
         você!
@@ -319,97 +38,73 @@
     </div>
 
     <!-- Radio Player -->
-    <div class="radio-player" id="radioPlayer" onclick="if(this.classList.contains('minimized')) togglePlayerView()">
-        <button class="toggle-btn" onclick="event.stopPropagation(); togglePlayerView()" title="Minimizar/Maximizar">
-            <i class="fas fa-chevron-down" id="toggleIcon"></i>
+    <div
+      class="radio-player"
+      id="radioPlayer"
+      onclick="if(this.classList.contains('minimized')) togglePlayerView()"
+    >
+      <button
+        class="toggle-btn"
+        onclick="event.stopPropagation(); togglePlayerView()"
+        title="Minimizar/Maximizar"
+      >
+        <i class="fas fa-chevron-down" id="toggleIcon"></i>
+      </button>
+
+      <div class="listeners-count"><i class="fas fa-headphones"></i> 128</div>
+
+      <div class="dj-avatar">
+        <img
+          src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=l"
+          alt="Avatar DJ"
+        />
+      </div>
+      <div class="player-info">
+        <span class="program-name">One Hits</span>
+        <span class="dj-name">DJ DJ_Richard</span>
+        <div class="vote-buttons">
+          <button class="vote-btn" onclick="vote('like')">
+            <i class="fas fa-thumbs-up"></i>
+          </button>
+          <button class="vote-btn" onclick="vote('dislike')">
+            <i class="fas fa-thumbs-down"></i>
+          </button>
+        </div>
+      </div>
+
+      <button class="request-btn" onclick="requestSong()">
+        <i class="fas fa-music"></i> <span class="btn-text">Pedir</span>
+      </button>
+
+      <div class="controls">
+        <a
+          href="https://www.habbo.com.br/room/12345678"
+          target="_blank"
+          class="room-btn"
+          title="Ir para o Quarto"
+        >
+          <i class="fas fa-door-open"></i>
+        </a>
+        <button class="play-btn" id="playBtn" onclick="toggleRadio()">
+          <i class="fas fa-play"></i>
         </button>
-
-        <div class="listeners-count"><i class="fas fa-headphones"></i> 128</div>
-
-        <div class="dj-avatar">
-            <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=l" alt="Avatar DJ">
-        </div>
-        <div class="player-info">
-            <span class="program-name">One Hits</span>
-            <span class="dj-name">DJ DJ_Richard</span>
-            <div class="vote-buttons">
-                <button class="vote-btn" onclick="vote('like')"><i class="fas fa-thumbs-up"></i></button>
-                <button class="vote-btn" onclick="vote('dislike')"><i class="fas fa-thumbs-down"></i></button>
-            </div>
-        </div>
-        
-        <button class="request-btn" onclick="requestSong()">
-            <i class="fas fa-music"></i> <span class="btn-text">Pedir</span>
-        </button>
-
-        <div class="controls">
-            <a href="https://www.habbo.com.br/room/12345678" target="_blank" class="room-btn" title="Ir para o Quarto">
-                <i class="fas fa-door-open"></i>
-            </a>
-            <button class="play-btn" id="playBtn" onclick="toggleRadio()">
-                <i class="fas fa-play"></i>
-            </button>
-            <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.5" onchange="setVolume(this.value)">
-        </div>
-        <audio id="radioStream" src="https://stream.zeno.fm/g4n8218991zuv" preload="none"></audio>
+        <input
+          type="range"
+          class="volume-slider"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0.5"
+          onchange="setVolume(this.value)"
+        />
+      </div>
+      <audio
+        id="radioStream"
+        src="https://stream.zeno.fm/g4n8218991zuv"
+        preload="none"
+      ></audio>
     </div>
 
-    <script>
-        const audio = document.getElementById('radioStream');
-        const playBtn = document.getElementById('playBtn');
-        const icon = playBtn.querySelector('i');
-        const player = document.getElementById('radioPlayer');
-        const toggleIcon = document.getElementById('toggleIcon');
-        let isPlaying = false;
-
-        function toggleRadio() {
-            if (isPlaying) {
-                audio.pause();
-                icon.classList.remove('fa-pause');
-                icon.classList.add('fa-play');
-                isPlaying = false;
-            } else {
-                audio.play().catch(e => console.log('Erro ao reproduzir:', e));
-                icon.classList.remove('fa-play');
-                icon.classList.add('fa-pause');
-                isPlaying = true;
-            }
-        }
-
-        function setVolume(val) {
-            audio.volume = val;
-        }
-
-        function requestSong() {
-            alert('Sistema de pedidos em desenvolvimento! Em breve você poderá pedir suas músicas favoritas.');
-        }
-
-        function togglePlayerView() {
-            player.classList.toggle('minimized');
-            if (player.classList.contains('minimized')) {
-                toggleIcon.classList.remove('fa-chevron-down');
-                toggleIcon.classList.add('fa-radio');
-            } else {
-                toggleIcon.classList.remove('fa-radio');
-                toggleIcon.classList.add('fa-chevron-down');
-            }
-        }
-
-        function vote(type) {
-            // Placeholder for vote logic
-            const btns = document.querySelectorAll('.vote-btn');
-            btns.forEach(b => {
-                b.classList.remove('liked', 'disliked');
-            });
-            
-            if (type === 'like') {
-                event.target.closest('.vote-btn').classList.add('liked');
-                console.log('Curtiu o locutor!');
-            } else {
-                event.target.closest('.vote-btn').classList.add('disliked');
-                console.log('Descurtiu o locutor!');
-            }
-        }
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
