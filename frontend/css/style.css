@@ -29,21 +29,42 @@ body {
 /* Cloud Section Placeholder */
 .cloud-section {
     width: 100%;
-    height: 150px;
+    height: 180px; /* Increased height for larger logo */
     background: linear-gradient(180deg, var(--bg-color) 0%, rgba(59, 130, 246, 0.2) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Allow logo to pop out if needed */
 }
 
-.cloud-section::after {
-    content: "☁️ Espaço para Nuvens ☁️";
+.cloud-text {
     color: var(--text-color);
     opacity: 0.5;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    z-index: 1;
+}
+
+.cloud-logo {
+    position: absolute;
+    right: 10%; /* Fixed on the right */
+    height: 160px; /* Much bigger */
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Remove pseudo-element since we added real element */
+.cloud-section::after {
+    content: none;
 }
 
 /* Header Styles */
