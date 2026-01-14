@@ -12,9 +12,7 @@
   </head>
   <body>
     <!-- Fixed Header (Top Player) -->
-        <div class="header-logo">
-            <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true" alt="One Habbo" style="height: 50px;">
-        </div>
+    <header class="main-header" id="mainHeader">
         <div class="header-player">
              <div class="header-avatar">
                 <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=s" alt="DJ">
@@ -32,9 +30,15 @@
                  </button>
              </div>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()">
-            <i class="fas fa-moon" id="themeIcon"></i>
-        </button>
+
+        <div class="header-right-side" style="display: flex; align-items: center; gap: 15px;">
+             <div class="header-logo">
+                <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true" alt="One Habbo" style="height: 50px;">
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+        </div>
     </header>
 
     <!-- Cloud Background Section -->
