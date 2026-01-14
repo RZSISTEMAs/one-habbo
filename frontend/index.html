@@ -283,8 +283,8 @@
     </div>
 
     <!-- Radio Player -->
-    <div class="radio-player" id="radioPlayer">
-        <button class="toggle-btn" onclick="togglePlayerView()" title="Minimizar/Maximizar">
+    <div class="radio-player" id="radioPlayer" onclick="if(this.classList.contains('minimized')) togglePlayerView()">
+        <button class="toggle-btn" onclick="event.stopPropagation(); togglePlayerView()" title="Minimizar/Maximizar">
             <i class="fas fa-chevron-down" id="toggleIcon"></i>
         </button>
 
