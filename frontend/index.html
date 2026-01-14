@@ -11,64 +11,51 @@
     />
   </head>
   <body>
-    <div class="container">
-      <img
-        src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true"
-        alt="One Habbo Logo"
-        class="logo"
-      />
-      <p>
-        Estamos em manutenção para trazer o melhor conteúdo do Habbo Hotel para
-        você!
-      </p>
-      <p>Volte em breve.</p>
+    <!-- Fixed Header (Top Player) -->
+    <header class="main-header" id="mainHeader">
+        <div class="header-logo">ONE HABBO</div>
+        <div class="header-player">
+             <div class="header-controls">
+                <button onclick="toggleRadio()"><i class="fas fa-play" id="headerPlayIcon"></i></button>
+             </div>
+             <span style="font-size: 0.9rem; font-weight: bold;">One Hits</span>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+    </header>
 
-      <div class="footer">
-        <p>
-          &copy; 2026 One Habbo. Desenvolvido por
-          <strong>RZSISTEMA</strong>.<br />
-          Não afiliado à Sulake Oy.
-          <a
-            href="https://github.com/RZSISTEMAs/one-habbo/wiki/Politica-de-Fa-Sites"
-            target="_blank"
-            >Política de Fã Sites</a
-          >.
-        </p>
-      </div>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">BEM VINDO AO<br>ONE HABBO</h1>
+            <p class="hero-subtitle">Sua melhor fonte de entretenimento e notícias do Habbo Hotel.</p>
+        </div>
+        <div class="hero-logo-container">
+            <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/logo_transparente-removebg-preview.png?raw=true" alt="One Habbo Logo" class="hero-logo">
+        </div>
+    </section>
 
-    <!-- Radio Player -->
-    <div
-      class="radio-player"
-      id="radioPlayer"
-      onclick="if(this.classList.contains('minimized')) togglePlayerView()"
-    >
-      <button
-        class="toggle-btn"
-        onclick="event.stopPropagation(); togglePlayerView()"
-        title="Minimizar/Maximizar"
-      >
+    <!-- Floating Audio Element (Shared) -->
+    <audio id="radioStream" src="https://stream.zeno.fm/g4n8218991zuv" preload="none"></audio>
+
+    <!-- Bottom Floating Player (Appears on Scroll) -->
+    <div class="radio-player" id="radioPlayer" onclick="if(this.classList.contains('minimized')) togglePlayerView()">
+      <button class="toggle-btn" onclick="event.stopPropagation(); togglePlayerView()" title="Minimizar/Maximizar">
         <i class="fas fa-chevron-down" id="toggleIcon"></i>
       </button>
 
       <div class="listeners-count"><i class="fas fa-headphones"></i> 128</div>
 
       <div class="dj-avatar">
-        <img
-          src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=l"
-          alt="Avatar DJ"
-        />
+        <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=l" alt="Avatar DJ" />
       </div>
       <div class="player-info">
         <span class="program-name">One Hits</span>
         <span class="dj-name">DJ DJ_Richard</span>
         <div class="vote-buttons">
-          <button class="vote-btn" onclick="vote('like')">
-            <i class="fas fa-thumbs-up"></i>
-          </button>
-          <button class="vote-btn" onclick="vote('dislike')">
-            <i class="fas fa-thumbs-down"></i>
-          </button>
+          <button class="vote-btn" onclick="vote('like')"><i class="fas fa-thumbs-up"></i></button>
+          <button class="vote-btn" onclick="vote('dislike')"><i class="fas fa-thumbs-down"></i></button>
         </div>
       </div>
 
@@ -77,32 +64,14 @@
       </button>
 
       <div class="controls">
-        <a
-          href="https://www.habbo.com.br/room/12345678"
-          target="_blank"
-          class="room-btn"
-          title="Ir para o Quarto"
-        >
+        <a href="https://www.habbo.com.br/room/12345678" target="_blank" class="room-btn" title="Ir para o Quarto">
           <i class="fas fa-door-open"></i>
         </a>
         <button class="play-btn" id="playBtn" onclick="toggleRadio()">
           <i class="fas fa-play"></i>
         </button>
-        <input
-          type="range"
-          class="volume-slider"
-          min="0"
-          max="1"
-          step="0.1"
-          value="0.5"
-          onchange="setVolume(this.value)"
-        />
+        <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.5" onchange="setVolume(this.value)" />
       </div>
-      <audio
-        id="radioStream"
-        src="https://stream.zeno.fm/g4n8218991zuv"
-        preload="none"
-      ></audio>
     </div>
 
     <script src="js/main.js"></script>
