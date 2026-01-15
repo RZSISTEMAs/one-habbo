@@ -180,17 +180,27 @@ body {
     margin: 0 auto;
     padding: 40px 2%;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 60px; /* Increased gap to push links further right */
+    grid-template-columns: auto 1fr auto; /* Users=Auto, Social=Take Space, Links=Right */
+    gap: 40px;
+    align-items: start;
 }
 
 @media (max-width: 1024px) {
     .footer-upper {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 30px;
+        gap: 40px;
     }
     
+    .links-col {
+        text-align: center;
+        justify-self: center; /* Reset for mobile */
+    }
+    
+    .footer-links a {
+        justify-content: center;
+    }
+
     .user-grid {
         justify-content: center;
     }
@@ -212,12 +222,22 @@ body {
     padding-bottom: 5px;
 }
 
-/* User Grid (6 cols x 3 rows = 18 items) */
+/* Specific Column Alignment */
+.links-col {
+    justify-self: end; /* Push to far right */
+    text-align: right;
+}
+
+.links-col h4 {
+    display: inline-block; /* Aligns with text-align right */
+}
+
+/* User Grid (6 cols x 3 rows = 18 items) FIXED WIDTH to prevent stretching */
 .user-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 columns */
-    gap: 10px;
-    max-width: 100%;
+    grid-template-columns: repeat(6, 48px); /* Fixed 48px cols for compact look */
+    gap: 8px;
+    width: fit-content; /* Don't stretch container */
 }
 
 .loading-users {
@@ -228,7 +248,7 @@ body {
 }
 
 .user-head {
-    width: 48px; /* Slightly larger/adjusted */
+    width: 48px;
     height: 48px;
     background: rgba(255,255,255,0.1);
     border-radius: 8px;
@@ -260,6 +280,8 @@ body {
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    height: 100%;
+    align-items: center; /* Center vertically in the large middle space */
 }
 
 .social-btn {
@@ -300,7 +322,12 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+    justify-content: flex-end; /* Right align flex content */
+    flex-direction: row; /* Icon left, text right? Or reverse? */
 }
+
+/* If text-align is right, user might expect icon on right. But let's keep icon on left for now, just pushed right. */
+/* Or hover effect sliding left? */
 
 .footer-links a:before {
     content: "›";
