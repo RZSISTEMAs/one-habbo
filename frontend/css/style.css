@@ -168,7 +168,7 @@ body {
 
 .news-portal-wrapper {
     display: grid;
-    grid-template-columns: 1.3fr 1fr; /* Left (Slider+Store) | Right (Sidebar) */
+    grid-template-columns: 1fr 1fr; /* 50% / 50% Split as requested */
     gap: 30px;
     align-items: start;
 }
@@ -176,15 +176,73 @@ body {
 .portal-left-column {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Space between Slider and Store */
+    gap: 25px; /* Reduced gap */
+    min-width: 0; /* Critical for grid/flex child overflow prevention */
 }
 
 /* Sidebar Container */
 .portal-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Space between Latest News and Partners */
+    gap: 25px;
     height: 100%;
+    min-width: 0; /* Critical for grid/flex child overflow prevention */
+}
+/* ... existing media query ... */
+
+.store-login-msg {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ... existing media query ... */
+
+/* ... Badge Card Styles Refined ... */
+.badge-card {
+    /* (100% space - 2 gaps of 15px) divided by 3 items */
+    flex: 0 0 calc((100% - 30px) / 3); 
+    
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px; /* Reduced radius */
+    padding: 10px; /* Further reduced padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    scroll-snap-align: start;
+}
+
+.badge-card img.badge-img {
+    height: 35px; /* Further reduced image size */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 6px;
+}
+
+.badge-card h4 {
+    font-size: 0.85rem; /* Further reduced title */
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.badge-price {
+    font-size: 0.8rem;
+    padding: 2px 8px; /* Compact padding */
+    margin-bottom: 5px;
+}
+
+.buy-btn {
+    padding: 4px 12px; /* Compact button */
+    font-size: 0.75rem;
+    width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -459,40 +517,35 @@ body {
 
 .store-grid {
     display: flex;
-    gap: 20px;
+    gap: 15px; /* Reduced gap from 20px */
     overflow-x: auto;
-    padding-bottom: 20px; /* Space for scrollbar */
+    padding-bottom: 5px; /* Minimal padding */
     scroll-snap-type: x mandatory;
     width: 100%;
-    max-width: 100%; /* CRITICAL: Prevent overflowing parent */
-    scrollbar-width: thin; /* Firefox */
+    max-width: 100%;
+    
+    /* Hide scrollbar */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
 }
 
-/* Custom Scrollbar for Webkit */
+/* Hide scrollbar for Webkit */
 .store-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.store-grid::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
-    border-radius: 4px;
-}
-
-.store-grid::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 4px;
+    display: none;
 }
 
 .badge-card {
-    /* (100% space - 2 gaps of 20px) divided by 3 items */
-    flex: 0 0 calc((100% - 40px) / 3);
-    min-width: 0; /* Allow shrinking if needed, but flex-basis rules */
-    /* max-width removed to allow filling the calculated space */
+    /* (100% - 30px gaps) space. 
+       We subtract 50px total to leave a 20px "safety buffer" so the 3rd item is definitely clearly inside.
+       Width = (100% - 50px) / 3. */
+    flex: 0 0 calc((100% - 50px) / 3);
+    box-sizing: border-box; /* SAFETY: Ensure padding doesn't expand width */
+    min-width: 0; 
     
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 15px;
-    padding: 15px; /* Reduced padding slightly */
+    border-radius: 10px;
+    padding: 8px; /* Slightly tighter padding */
     display: flex;
     flex-direction: column;
     align-items: center;
