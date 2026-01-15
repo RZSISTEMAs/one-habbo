@@ -184,13 +184,12 @@ function renderLastRegisteredUsers() {
     const userGrid = document.getElementById('lastRegisteredGrid');
     if(!userGrid) return;
     
-    // User list provided by the user (Extended to 20 for 10x2 grid)
+    // User list provided by the user (Adjusted to 18 for 6x3 grid)
     const users = [
         "OllaIia", "Jinx-estelar", "Jose.", "Cherry", "bunnygirll", 
         "thamipfr", "Vid4", "Dramen", "Baky", "Flufricy:3", 
         "Tvesman", "SandyPelada", "SoIitudine", "Beep", 
-        // Filling up to 20 with likely active or random names/placeholders to ensure grid is full
-        "Nailson88", "4Queijos", "Disco-Lee", "Jeff", "Notion", "Frank"
+        "Nailson88", "4Queijos", "Disco-Lee", "Jeff"
     ];
 
     userGrid.innerHTML = ''; // Clear loading
