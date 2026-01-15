@@ -159,38 +159,60 @@ body {
     box-shadow: 0 4px 15px rgba(46, 102, 255, 0.4);
 }
 
-/* Sidebar Theme Toggle */
-#fixed-theme-toggle {
-    position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
+/* Footer Styles */
+.main-footer {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid var(--border-color);
+    padding: 40px 0;
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+[data-theme="light"] .main-footer {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-info {
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+.footer-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
 }
 
-#fixed-theme-toggle:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 0 20px rgba(46, 102, 255, 0.4);
-    border-color: #3b82f6;
+.footer-toggle:hover {
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(46, 102, 255, 0.3);
 }
 
-#fixed-theme-toggle img {
-    width: 35px;
-    height: 35px;
+.footer-toggle img {
+    width: 24px;
+    height: 24px;
     object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 /* Radio Player Styles */
