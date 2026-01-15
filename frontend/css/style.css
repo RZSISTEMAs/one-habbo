@@ -267,10 +267,18 @@ body {
     }
 }
 
+/* Header adjustments */
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .portal-title {
     font-size: 1.1rem;
     color: var(--text-color);
-    margin-bottom: 15px;
+    margin-bottom: 0; /* Let container handle spacing */
     border-left: 4px solid #3b82f6;
     padding-left: 10px;
     text-transform: uppercase;
@@ -278,6 +286,22 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.see-more-btn {
+    font-size: 0.85rem;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.see-more-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    color: #2563eb;
 }
 
 /* 1. Portal Slider */
@@ -501,6 +525,7 @@ body {
 .store-section {
     width: 100%;
     margin: 0;
+    margin-top: 35px; /* Added spacing to align with Partners (compensating for Slider height) */
     padding: 0;
 }
 

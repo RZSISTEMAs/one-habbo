@@ -177,8 +177,9 @@ function processPortalNews(newsList) {
     const featured = newsList.slice(0, 3);
     renderSlider(featured);
 
-    // 2. Latest List Content (Next 5 items)
-    const latest = newsList.slice(3, 8);
+    // 2. Latest List Content (Next 4 items instead of 5)
+    // Slicing 4 items ensures the height balances better with the slider + partners
+    const latest = newsList.slice(3, 7); // Taking 4 items (3,4,5,6)
     renderLatestList(latest);
 }
 

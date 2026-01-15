@@ -45,7 +45,7 @@
     <!-- News Portal Section -->
     <section id="news-portal" class="news-portal-section">
     <div class="news-portal-wrapper">
-            <!-- Left Column: Slider + Store -->
+            <!-- Left Column: Slider + Partners -->
             <div class="portal-left-column">
                 <!-- 1. Featured Slider -->
                 <div class="portal-slider">
@@ -60,33 +60,11 @@
                     <div class="slider-indicators" id="sliderIndicators"></div>
                 </div>
 
-                <!-- 2. Badge Store Section (Moved) -->
-                <section id="badge-store" class="store-section">
-                    <div class="section-header left-header">
-                        <h4 class="portal-title" style="margin-bottom: 15px;"><i class="fas fa-shopping-bag"></i> Loja One Habbo</h4>
-                        <p class="section-desc" style="display:none;">Adquira emblemas exclusivos com seus One Coins!</p> 
-                        <!-- Hid desc for cleaner sidebar look, kept element just in case -->
-                    </div>
-                    <div class="store-grid" id="badgeGrid">
-                        <!-- Badges loaded via JS -->
-                        <div class="loading-store">Carregando a loja...</div>
-                    </div>
-                    <p class="store-login-msg"><i class="fas fa-info-circle"></i> Para comprar precisa estar logado no site.</p>
-                </section>
-            </div>
-
-            <!-- Right Column: Sidebar (Latest + Partners) -->
-            <div class="portal-sidebar">
-                <div class="portal-latest">
-                    <h3 class="portal-title"><i class="fas fa-newspaper"></i> Últimas Notícias</h3>
-                    <div class="latest-list" id="latestList">
-                        <!-- List items loaded via JS -->
-                        <div class="loading-news">Carregando...</div>
-                    </div>
-                </div>
-
+                <!-- 2. Partners (Moved Here) -->
                 <div class="portal-partners">
-                    <h3 class="portal-title"><i class="fas fa-handshake"></i> Parceiros</h3>
+                    <div class="section-header flex-header" style="margin-bottom: 15px;">
+                         <h3 class="portal-title" style="margin:0"><i class="fas fa-handshake"></i> Parceiros</h3>
+                    </div>
                     <div class="partners-grid" id="partnersGrid">
                         <!-- Partners loaded via JS -->
                         <div class="partner-card">
@@ -107,6 +85,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Right Column: Sidebar (Latest + Store) -->
+            <div class="portal-sidebar">
+                <div class="portal-latest">
+                    <div class="section-header flex-header" style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <h3 class="portal-title" style="margin:0"><i class="fas fa-newspaper"></i> Últimas Notícias</h3>
+                        <a href="#" class="see-more-btn">Ver mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="latest-list" id="latestList">
+                        <!-- List items loaded via JS -->
+                        <div class="loading-news">Carregando...</div>
+                    </div>
+                </div>
+
+                <!-- 3. Badge Store Section (Moved Here) -->
+                <section id="badge-store" class="store-section">
+                    <div class="section-header flex-header" style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <h4 class="portal-title" style="margin:0"><i class="fas fa-shopping-bag"></i> Loja One Habbo</h4>
+                        <a href="#" class="see-more-btn">Ver mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="store-grid" id="badgeGrid">
+                        <!-- Badges loaded via JS -->
+                        <div class="loading-store">Carregando a loja...</div>
+                    </div>
+                    <p class="store-login-msg"><i class="fas fa-info-circle"></i> Para comprar precisa estar logado no site.</p>
+                </section>
             </div>
         </div>
     </section>
