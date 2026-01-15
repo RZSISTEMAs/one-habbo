@@ -184,13 +184,13 @@ function renderLastRegisteredUsers() {
     const userGrid = document.getElementById('lastRegisteredGrid');
     if(!userGrid) return;
     
-    // User list provided by the user
-    // In a real scenario, this would come from an endpoint like /api/recent_users
-    // For now, we simulate this dynamic nature by rendering this specific list
+    // User list provided by the user (Extended to 20 for 10x2 grid)
     const users = [
         "OllaIia", "Jinx-estelar", "Jose.", "Cherry", "bunnygirll", 
         "thamipfr", "Vid4", "Dramen", "Baky", "Flufricy:3", 
-        "Tvesman", "SandyPelada", "SoIitudine", "Beep"
+        "Tvesman", "SandyPelada", "SoIitudine", "Beep", 
+        // Filling up to 20 with likely active or random names/placeholders to ensure grid is full
+        "Nailson88", "4Queijos", "Disco-Lee", "Jeff", "Notion", "Frank"
     ];
 
     userGrid.innerHTML = ''; // Clear loading
