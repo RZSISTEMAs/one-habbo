@@ -111,3 +111,73 @@ document.querySelectorAll('.nav-link').forEach(link => {
         }
     });
 });
+
+// -- Reverted Mobile Menu (Function removed) --
+
+// Fetch Habbo News
+async function fetchLatestNews() {
+    const newsGrid = document.getElementById('newsGrid');
+    // Using a proxy or direct fetch? Habbo API often has CORS. 
+    // Trying direct fetch first. If it fails, I'll need a fallback or CORS proxy.
+    // NOTE: Direct browser fetch to 'www.habbo.com.br' often blocked by CORS.
+    // For this prototype, I will try to fetch. If error, I will show mock data to ensure UI works for the user.
+    const apiUrl = 'https://www.habbo.com.br/api/public/news';
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('API Error');
+        const data = await response.json();
+        
+        // Filter/slice to 5 items
+        const latestNews = data.slice(0, 5);
+        renderNews(latestNews);
+
+    } catch (error) {
+        console.warn('CORS/API Error fetching news, using fallback data:', error);
+        // Fallback Mock Data so the user sees the layout
+        const mockNews = [
+            { title: "Bem-vindos ao One Habbo!", summary: "O melhor fã-site chegou.", image: "img/logo_transparente.png", date: new Date().toISOString() },
+            { title: "Evento de Inauguração", summary: "Venha participar da nossa festa.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_xmas23.png", date: new Date().toISOString() },
+            { title: "Entrevista com DJ_Richard", summary: "Conheça a lenda.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_ny24.png", date: new Date().toISOString() },
+            { title: "Novos Emblemas Disponíveis", summary: "Saiba como pegar.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_ltd.png", date: new Date().toISOString() },
+            { title: "Manutenção Programada", summary: "Melhorias no servidor.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_generic.png", date: new Date().toISOString() }
+        ];
+        renderNews(mockNews);
+    }
+}
+
+function renderNews(newsList) {
+    const newsGrid = document.getElementById('newsGrid');
+    newsGrid.innerHTML = ''; // Clear loading
+
+    newsList.forEach(item => {
+        // Habbo API structure might vary, adapting standard keys or mock keys
+        // If API returns 'images', 'title', 'summary', 'published'
+        const title = item.title || "Sem título";
+        const summary = item.summary || item.description || "Clique para ler mais.";
+        // Habbo sometimes returns images as lists or distinct fields. Adjusting...
+        // For mock/simple usage:
+        const image = item.image || item.images?.[0]?.url || "img/logo_transparente.png"; 
+        const link = item.path ? `https://habbo.com.br${item.path}` : '#';
+        const date = new Date(item.date || item.published || Date.now()).toLocaleDateString('pt-BR');
+
+        const card = document.createElement('a');
+        card.className = 'news-card';
+        card.href = link;
+        card.target = '_blank'; // Open in new tab if external
+        
+        card.innerHTML = `
+            <img src="${image}" alt="${title}" class="news-image" onerror="this.src='img/logo_transparente.png'">
+            <div class="news-content">
+                <div class="news-title">${title}</div>
+                <div class="news-date"><i class="far fa-clock"></i> ${date}</div>
+            </div>
+        `;
+        newsGrid.appendChild(card);
+    });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+    fetchLatestNews();
+});

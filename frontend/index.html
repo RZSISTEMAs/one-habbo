@@ -33,10 +33,7 @@
 
     <!-- Custom Navbar (Below Cloud Section) -->
     <nav class="main-navbar">
-        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links mobile-hidden">
+        <ul class="nav-links">
             <li><a href="#" class="nav-link active">Início</a></li>
             <li><a href="#" class="nav-link">Notícias</a></li>
             <li><a href="#" class="nav-link">Rádio</a></li>
@@ -44,9 +41,18 @@
             <li><a href="#" class="nav-link">Fórum</a></li>
         </ul>
         <button class="theme-toggle" onclick="toggleTheme()">
-            <i class="fas fa-moon" id="themeIcon"></i>
+             <i class="fas fa-moon" id="themeIcon"></i>
         </button>
     </nav>
+
+    <!-- Latest News Section -->
+    <section id="latest-news" class="news-section">
+        <h2 class="section-title">Últimas Notícias</h2>
+        <div class="news-grid" id="newsGrid">
+            <!-- News items will be loaded here via JS -->
+            <div class="loading-news">Carregando notícias do Habbo...</div>
+        </div>
+    </section>
 
     <!-- Main Content Stream (Placeholder) -->
     <main style="padding: 2rem; max-width: 1200px; width: 100%;">
