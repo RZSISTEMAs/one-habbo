@@ -223,6 +223,12 @@ body {
 }
 
 /* Specific Column Alignment */
+.social-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers Title and Icons */
+}
+
 .links-col {
     justify-self: end; /* Push to far right */
     text-align: right;
@@ -232,12 +238,12 @@ body {
     display: inline-block; /* Aligns with text-align right */
 }
 
-/* User Grid (6 cols x 3 rows = 18 items) FIXED WIDTH to prevent stretching */
+/* User Grid (6 cols x 3 rows = 18 items) */
 .user-grid {
     display: grid;
-    grid-template-columns: repeat(6, 48px); /* Fixed 48px cols for compact look */
-    gap: 8px;
-    width: fit-content; /* Don't stretch container */
+    grid-template-columns: repeat(6, 56px); /* Larger columns */
+    gap: 10px;
+    width: fit-content;
 }
 
 .loading-users {
@@ -248,8 +254,8 @@ body {
 }
 
 .user-head {
-    width: 48px;
-    height: 48px;
+    width: 56px; /* Larger size */
+    height: 56px;
     background: rgba(255,255,255,0.1);
     border-radius: 8px;
     overflow: hidden;
