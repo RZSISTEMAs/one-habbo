@@ -159,6 +159,40 @@ body {
     box-shadow: 0 4px 15px rgba(46, 102, 255, 0.4);
 }
 
+/* Sidebar Theme Toggle */
+#fixed-theme-toggle {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#fixed-theme-toggle:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(46, 102, 255, 0.4);
+    border-color: #3b82f6;
+}
+
+#fixed-theme-toggle img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
 /* Radio Player Styles */
 .radio-player {
   position: fixed;

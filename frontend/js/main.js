@@ -30,18 +30,17 @@ function toggleRadio() {
   }
 }
 
+
+
 function toggleTheme() {
     const body = document.body;
     const isLight = body.getAttribute('data-theme') === 'light';
     
     if (isLight) {
         body.removeAttribute('data-theme');
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
+        // No icon swap needed for custom image
     } else {
         body.setAttribute('data-theme', 'light');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
     }
 }
 
