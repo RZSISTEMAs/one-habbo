@@ -180,8 +180,14 @@ body {
     margin: 0 auto;
     padding: 40px 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Enforce 3 columns */
     gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .footer-upper {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
 }
 
 .footer-col h4 {
@@ -203,6 +209,12 @@ body {
     gap: 5px;
 }
 
+.loading-users {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+}
+
 .user-head {
     width: 35px;
     height: 35px;
@@ -214,6 +226,7 @@ body {
     align-items: center;
     border: 1px solid rgba(255,255,255,0.05);
     transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .user-head:hover {
@@ -283,42 +296,25 @@ body {
     padding-left: 3px;
 }
 
-/* Theme Toggle in Footer */
-.footer-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    background: var(--card-bg);
-    padding: 12px 20px;
-    border-radius: 30px;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s;
-    margin-top: 5px;
-}
-
-.footer-toggle:hover {
-    background: var(--accent-gradient);
-    color: white;
-    box-shadow: 0 4px 15px rgba(46, 102, 255, 0.3);
-}
-
-.footer-toggle img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-
 /* Lower Footer */
 .footer-lower {
     background: rgba(0,0,0,0.2);
     padding: 20px 5%;
-    text-align: center;
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
+.footer-content-lower {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 .footer-disclaimer p {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     opacity: 0.7;
     font-size: 0.75rem;
 }
@@ -328,6 +324,31 @@ body {
     font-weight: bold;
     opacity: 1;
     color: var(--text-color);
+}
+
+/* Lower Toggle */
+.lower-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background: var(--card-bg);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.lower-toggle:hover {
+    background: var(--accent-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(46, 102, 255, 0.3);
+}
+
+.lower-toggle img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 /* Radio Player Styles */

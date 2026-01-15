@@ -179,7 +179,42 @@ function renderNews(newsList) {
     });
 }
 
+// Render Last Registered Users (Using provided list + API Images)
+function renderLastRegisteredUsers() {
+    const userGrid = document.getElementById('lastRegisteredGrid');
+    if(!userGrid) return;
+    
+    // User list provided by the user
+    // In a real scenario, this would come from an endpoint like /api/recent_users
+    // For now, we simulate this dynamic nature by rendering this specific list
+    const users = [
+        "OllaIia", "Jinx-estelar", "Jose.", "Cherry", "bunnygirll", 
+        "thamipfr", "Vid4", "Dramen", "Baky", "Flufricy:3", 
+        "Tvesman", "SandyPelada", "SoIitudine", "Beep"
+    ];
+
+    userGrid.innerHTML = ''; // Clear loading
+
+    users.forEach(username => {
+        // Habbo Imaging API for avatars
+        // Direction 3 = Front right (ish), Head_direction 3 = Same, Gesture sml = Smile
+        const avatarUrl = `https://www.habbo.com.br/habbo-imaging/avatarimage?user=${encodeURIComponent(username)}&direction=3&head_direction=3&gesture=sml&size=s`;
+        
+        const userDiv = document.createElement('div');
+        userDiv.className = 'user-head';
+        userDiv.title = username;
+        
+        // Add click to profile (placeholder link)
+        userDiv.onclick = () => window.open(`https://www.habbo.com.br/profile/${username}`, '_blank');
+
+        userDiv.innerHTML = `<img src="${avatarUrl}" alt="${username}" onerror="this.style.display='none'">`;
+        
+        userGrid.appendChild(userDiv);
+    });
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     fetchLatestNews();
+    renderLastRegisteredUsers();
 });
