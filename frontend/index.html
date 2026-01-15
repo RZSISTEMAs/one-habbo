@@ -33,14 +33,17 @@
 
     <!-- Custom Navbar (Below Cloud Section) -->
     <nav class="main-navbar">
-        <ul class="nav-links">
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links mobile-hidden">
             <li><a href="#" class="nav-link active">Início</a></li>
             <li><a href="#" class="nav-link">Notícias</a></li>
             <li><a href="#" class="nav-link">Rádio</a></li>
             <li><a href="#" class="nav-link">Equipe</a></li>
             <li><a href="#" class="nav-link">Fórum</a></li>
         </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" style="margin-left: 20px;">
+        <button class="theme-toggle" onclick="toggleTheme()">
             <i class="fas fa-moon" id="themeIcon"></i>
         </button>
     </nav>

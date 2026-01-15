@@ -505,25 +505,24 @@ a {
     display: none; /* Hide old if still present */
 }
 /* Mobile Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     /* Stack Cloud Section */
     .cloud-section {
-        flex-direction: column-reverse; /* Logo on top, Player below? Or standard column? User might prefer Logo top. Let's try column-reverse if logo is last in HTML but we want it top. Logo is LAST in HTML. So column-reverse puts it FIRST visual. */
+        flex-direction: column-reverse;
         height: auto;
-        padding: 20px 5%;
+        padding: 30px 5%;
         gap: 20px;
         text-align: center;
     }
 
-    /* Resize & Center Logo */
     .cloud-logo {
         position: relative;
-        height: 140px; /* Smaller for mobile */
+        height: 140px;
         right: auto;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
-    /* Center Player Info */
     .cloud-player-left {
         flex-direction: column;
         width: 100%;
@@ -531,7 +530,7 @@ a {
     }
 
     .cloud-avatar img {
-        height: 100px; /* Slightly smaller */
+        height: 110px;
     }
 
     .cloud-info-box {
@@ -544,33 +543,55 @@ a {
         justify-content: center;
     }
 
-    /* Navbar Horizontal Scroll */
+    /* Navbar Mobile (Hamburger) */
     .main-navbar {
-        justify-content: flex-start; /* Align left to allow scroll start */
-        overflow-x: auto;
-        padding: 0 10px;
-        -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
-        scrollbar-width: none; /* Hide scrollbar Firefox */
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 60px;
     }
 
-    .main-navbar::-webkit-scrollbar {
-        display: none; /* Hide scrollbar Chrome/Safari */
+    .mobile-menu-btn {
+        display: block; /* Show menu button */
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-color);
+        padding: 10px;
     }
 
     .nav-links {
-        gap: 15px;
-        padding-right: 20px; /* Space for end of scroll */
-        white-space: nowrap; /* Prevent wrapping */
+        position: fixed;
+        top: 0;
+        left: -100%; /* Hidden by default */
+        width: 80%;
+        height: 100vh;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.4s ease;
+        z-index: 1001; /* Above everything */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.nav-active {
+        left: 0; /* Show menu */
     }
 
     .nav-link {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
     }
 
     /* Adjust Bottom Player for Mobile */
     .radio-player {
-        width: 95%;
+        width: 90%;
         padding: 1rem;
         bottom: 1rem;
         flex-direction: column;
@@ -578,12 +599,9 @@ a {
         align-items: center;
         border-radius: 15px;
     }
-
+    
     .radio-player.minimized {
-        width: 50px;
-        height: 50px;
-        bottom: 70px; /* Above bottom bar if any */
-        right: 10px;
+        bottom: 80px; 
     }
 
     .controls {
@@ -596,4 +614,9 @@ a {
         align-items: center;
         text-align: center;
     }
+}
+
+/* Desktop default for menu button */
+.mobile-menu-btn {
+    display: none;
 }

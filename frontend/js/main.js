@@ -81,3 +81,33 @@ function vote(type) {
     console.log("Descurtiu o locutor!");
   }
 }
+
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const menuBtn = document.querySelector('.mobile-menu-btn i');
+    
+    navLinks.classList.toggle('nav-active');
+    
+    // Change icon based on state
+    if (navLinks.classList.contains('nav-active')) {
+        menuBtn.classList.remove('fa-bars');
+        menuBtn.classList.add('fa-times');
+    } else {
+        menuBtn.classList.remove('fa-times');
+        menuBtn.classList.add('fa-bars');
+    }
+}
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        const menuBtn = document.querySelector('.mobile-menu-btn i');
+        if (navLinks.classList.contains('nav-active')) {
+            navLinks.classList.remove('nav-active');
+            menuBtn.classList.remove('fa-times');
+            menuBtn.classList.add('fa-bars');
+        }
+    });
+});
