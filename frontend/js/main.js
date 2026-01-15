@@ -135,12 +135,14 @@ async function fetchLatestNews() {
     } catch (error) {
         console.warn('CORS/API Error fetching news, using fallback data:', error);
         // Fallback Mock Data so the user sees the layout
+        const LOGO_URL = "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png";
+        
         const mockNews = [
-            { title: "Bem-vindos ao One Habbo!", summary: "O melhor fã-site chegou.", image: "img/logo_transparente.png", date: new Date().toISOString() },
-            { title: "Evento de Inauguração", summary: "Venha participar da nossa festa.", image: "img/logo_transparente.png", date: new Date().toISOString() },
-            { title: "Entrevista com DJ_Richard", summary: "Conheça a lenda.", image: "img/logo_transparente.png", date: new Date().toISOString() },
-            { title: "Novos Emblemas Disponíveis", summary: "Saiba como pegar.", image: "img/logo_transparente.png", date: new Date().toISOString() },
-            { title: "Manutenção Programada", summary: "Melhorias no servidor.", image: "img/logo_transparente.png", date: new Date().toISOString() }
+            { title: "Bem-vindos ao One Habbo!", summary: "O melhor fã-site chegou.", image: LOGO_URL, date: new Date().toISOString() },
+            { title: "Evento de Inauguração", summary: "Venha participar da nossa festa.", image: LOGO_URL, date: new Date().toISOString() },
+            { title: "Entrevista com DJ_Richard", summary: "Conheça a lenda.", image: LOGO_URL, date: new Date().toISOString() },
+            { title: "Novos Emblemas Disponíveis", summary: "Saiba como pegar.", image: LOGO_URL, date: new Date().toISOString() },
+            { title: "Manutenção Programada", summary: "Melhorias no servidor.", image: LOGO_URL, date: new Date().toISOString() }
         ];
         renderNews(mockNews);
     }
@@ -149,6 +151,7 @@ async function fetchLatestNews() {
 function renderNews(newsList) {
     const newsGrid = document.getElementById('newsGrid');
     newsGrid.innerHTML = ''; // Clear loading
+    const LOGO_URL = "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png";
 
     newsList.forEach(item => {
         // Habbo API structure might vary, adapting standard keys or mock keys
@@ -157,7 +160,7 @@ function renderNews(newsList) {
         const summary = item.summary || item.description || "Clique para ler mais.";
         // Habbo sometimes returns images as lists or distinct fields. Adjusting...
         // For mock/simple usage:
-        const image = item.image || item.images?.[0]?.url || "img/logo_transparente.png"; 
+        const image = item.image || item.images?.[0]?.url || LOGO_URL; 
         const link = item.path ? `https://habbo.com.br${item.path}` : '#';
         const date = new Date(item.date || item.published || Date.now()).toLocaleDateString('pt-BR');
 
@@ -167,7 +170,7 @@ function renderNews(newsList) {
         card.target = '_blank'; // Open in new tab if external
         
         card.innerHTML = `
-            <img src="${image}" alt="${title}" class="news-image" onerror="this.src='img/logo_transparente.png'">
+            <img src="${image}" alt="${title}" class="news-image" onerror="this.src='${LOGO_URL}'">
             <div class="news-content">
                 <div class="news-title">${title}</div>
                 <div class="news-date"><i class="far fa-clock"></i> ${date}</div>
