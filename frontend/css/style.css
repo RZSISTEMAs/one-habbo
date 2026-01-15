@@ -416,6 +416,136 @@ body {
     margin-top: 50px;
 }
 
+/* --- Badge Store Section --- */
+.store-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+.center-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-desc {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-top: -10px;
+}
+
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.badge-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-card:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+.badge-frame {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px dashed rgba(255,255,255,0.1);
+    transition: background 0.3s;
+}
+
+.badge-card:hover .badge-frame {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+}
+
+.badge-img {
+    width: 40px; /* Standard badge size approx */
+    height: 40px;
+    object-fit: contain;
+    image-rendering: pixelated; /* Sharp pixel art */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.badge-info h4 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.badge-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.6em; /* Fixed height for consistency */
+}
+
+.badge-price {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-price i {
+    font-size: 0.8rem;
+}
+
+.buy-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #3b82f6;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.buy-btn:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+.loading-store {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+    font-style: italic;
+}
+
 /* Footer Styles */
 .main-footer {
     width: 100%;
