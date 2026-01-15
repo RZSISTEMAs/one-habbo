@@ -504,3 +504,96 @@ a {
 .header-controls button {
     display: none; /* Hide old if still present */
 }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Stack Cloud Section */
+    .cloud-section {
+        flex-direction: column-reverse; /* Logo on top, Player below? Or standard column? User might prefer Logo top. Let's try column-reverse if logo is last in HTML but we want it top. Logo is LAST in HTML. So column-reverse puts it FIRST visual. */
+        height: auto;
+        padding: 20px 5%;
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* Resize & Center Logo */
+    .cloud-logo {
+        position: relative;
+        height: 140px; /* Smaller for mobile */
+        right: auto;
+        margin-bottom: 10px;
+    }
+
+    /* Center Player Info */
+    .cloud-player-left {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .cloud-avatar img {
+        height: 100px; /* Slightly smaller */
+    }
+
+    .cloud-info-box {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .info-stats {
+        justify-content: center;
+    }
+
+    /* Navbar Horizontal Scroll */
+    .main-navbar {
+        justify-content: flex-start; /* Align left to allow scroll start */
+        overflow-x: auto;
+        padding: 0 10px;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+
+    .main-navbar::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .nav-links {
+        gap: 15px;
+        padding-right: 20px; /* Space for end of scroll */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    /* Adjust Bottom Player for Mobile */
+    .radio-player {
+        width: 95%;
+        padding: 1rem;
+        bottom: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        border-radius: 15px;
+    }
+
+    .radio-player.minimized {
+        width: 50px;
+        height: 50px;
+        bottom: 70px; /* Above bottom bar if any */
+        right: 10px;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .player-info {
+        align-items: center;
+        text-align: center;
+    }
+}
