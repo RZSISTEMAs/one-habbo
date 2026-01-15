@@ -137,10 +137,10 @@ async function fetchLatestNews() {
         // Fallback Mock Data so the user sees the layout
         const mockNews = [
             { title: "Bem-vindos ao One Habbo!", summary: "O melhor fã-site chegou.", image: "img/logo_transparente.png", date: new Date().toISOString() },
-            { title: "Evento de Inauguração", summary: "Venha participar da nossa festa.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_xmas23.png", date: new Date().toISOString() },
-            { title: "Entrevista com DJ_Richard", summary: "Conheça a lenda.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_ny24.png", date: new Date().toISOString() },
-            { title: "Novos Emblemas Disponíveis", summary: "Saiba como pegar.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_ltd.png", date: new Date().toISOString() },
-            { title: "Manutenção Programada", summary: "Melhorias no servidor.", image: "https://images.habbo.com/c_images/WebPromo/web_promo_generic.png", date: new Date().toISOString() }
+            { title: "Evento de Inauguração", summary: "Venha participar da nossa festa.", image: "img/logo_transparente.png", date: new Date().toISOString() },
+            { title: "Entrevista com DJ_Richard", summary: "Conheça a lenda.", image: "img/logo_transparente.png", date: new Date().toISOString() },
+            { title: "Novos Emblemas Disponíveis", summary: "Saiba como pegar.", image: "img/logo_transparente.png", date: new Date().toISOString() },
+            { title: "Manutenção Programada", summary: "Melhorias no servidor.", image: "img/logo_transparente.png", date: new Date().toISOString() }
         ];
         renderNews(mockNews);
     }
