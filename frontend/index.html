@@ -44,21 +44,37 @@
 
     <!-- News Portal Section -->
     <section id="news-portal" class="news-portal-section">
-        <div class="news-portal-wrapper">
-            <!-- 1. Featured Slider (Left) -->
-            <div class="portal-slider">
-                <div class="slider-wrapper" id="heroSlider">
-                    <!-- Slides loaded via JS -->
-                    <div class="loading-slider">Carregando Destaques...</div>
+    <div class="news-portal-wrapper">
+            <!-- Left Column: Slider + Store -->
+            <div class="portal-left-column">
+                <!-- 1. Featured Slider -->
+                <div class="portal-slider">
+                    <div class="slider-wrapper" id="heroSlider">
+                        <!-- Slides loaded via JS -->
+                        <div class="loading-slider">Carregando Destaques...</div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
+                        <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
+                    </div>
+                    <div class="slider-indicators" id="sliderIndicators"></div>
                 </div>
-                <div class="slider-controls">
-                    <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
-                    <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
-                </div>
-                <div class="slider-indicators" id="sliderIndicators"></div>
+
+                <!-- 2. Badge Store Section (Moved) -->
+                <section id="badge-store" class="store-section">
+                    <div class="section-header left-header">
+                        <h4 class="portal-title" style="margin-bottom: 15px;"><i class="fas fa-shopping-bag"></i> Loja One Habbo</h4>
+                        <p class="section-desc" style="display:none;">Adquira emblemas exclusivos com seus One Coins!</p> 
+                        <!-- Hid desc for cleaner sidebar look, kept element just in case -->
+                    </div>
+                    <div class="store-grid" id="badgeGrid">
+                        <!-- Badges loaded via JS -->
+                        <div class="loading-store">Carregando a loja...</div>
+                    </div>
+                </section>
             </div>
 
-            <!-- 2. Sidebar (Right: Latest + Partners) -->
+            <!-- Right Column: Sidebar (Latest + Partners) -->
             <div class="portal-sidebar">
                 <div class="portal-latest">
                     <h3 class="portal-title"><i class="fas fa-newspaper"></i> Últimas Notícias</h3>
@@ -91,18 +107,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Badge Store Section -->
-    <section id="badge-store" class="store-section">
-        <div class="section-header center-header">
-            <h2 class="section-title"><i class="fas fa-shopping-bag"></i> Loja One Habbo</h2>
-            <p class="section-desc">Adquira emblemas exclusivos com seus One Coins!</p>
-        </div>
-        <div class="store-grid" id="badgeGrid">
-            <!-- Badges loaded via JS -->
-            <div class="loading-store">Carregando a loja...</div>
         </div>
     </section>
 

@@ -168,9 +168,15 @@ body {
 
 .news-portal-wrapper {
     display: grid;
-    grid-template-columns: 1.3fr 1fr; /* Slider (Larger) | Sidebar (Standard) */
-    gap: 25px;
+    grid-template-columns: 1.3fr 1fr; /* Left (Slider+Store) | Right (Sidebar) */
+    gap: 30px;
     align-items: start;
+}
+
+.portal-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between Slider and Store */
 }
 
 /* Sidebar Container */
@@ -184,6 +190,22 @@ body {
 @media (max-width: 900px) {
     .news-portal-wrapper {
         grid-template-columns: 1fr; /* Stack main columns on smaller screens */
+        gap: 40px;
+    }
+    
+    .portal-left-column {
+        width: 100%; /* Ensure full width */
+        min-width: 0; /* Prevent flex/grid item overflow issues */
+    }
+
+    .store-grid {
+        /* Ensure carousel works on mobile without stretching parent */
+        width: 100%; 
+        max-width: 100vw; /* Hard stop */
+    }
+
+    .portal-sidebar {
+        width: 100%;
     }
 }
 
@@ -268,6 +290,7 @@ body {
     opacity: 0.9;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -418,21 +441,21 @@ body {
 
 /* --- Badge Store Section --- */
 .store-section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 5%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .center-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.section-desc {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    margin-top: -10px;
+.left-header {
+    text-align: left;
+    margin-bottom: 15px;
 }
+/* .section-desc removed or hidden via HTML inline style for now */
 
 .store-grid {
     display: flex;
@@ -441,6 +464,7 @@ body {
     padding-bottom: 20px; /* Space for scrollbar */
     scroll-snap-type: x mandatory;
     width: 100%;
+    max-width: 100%; /* CRITICAL: Prevent overflowing parent */
     scrollbar-width: thin; /* Firefox */
 }
 
@@ -460,21 +484,35 @@ body {
 }
 
 .badge-card {
-    min-width: 200px; /* Fixed width for carousel items */
-    max-width: 200px;
+    /* (100% space - 2 gaps of 20px) divided by 3 items */
+    flex: 0 0 calc((100% - 40px) / 3);
+    min-width: 0; /* Allow shrinking if needed, but flex-basis rules */
+    /* max-width removed to allow filling the calculated space */
+    
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 15px;
-    padding: 20px;
+    padding: 15px; /* Reduced padding slightly */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    scroll-snap-align: start; /* Snap each card */
-    flex-shrink: 0; /* Prevent shrinking */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    scroll-snap-align: start;
+}
+
+@media (max-width: 768px) {
+    .badge-card {
+        /* On mobile, maybe show 2 or 1.5? Let's show 2 for better density */
+        flex: 0 0 calc((100% - 20px) / 2);
+    }
+}
+
+@media (max-width: 480px) {
+    .badge-card {
+        /* Very small screens: 1 item */
+        flex: 0 0 100%;
+    }
 }
 
 .badge-card:hover {
