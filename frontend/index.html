@@ -42,12 +42,54 @@
         </ul>
     </nav>
 
-    <!-- Latest News Section -->
-    <section id="latest-news" class="news-section">
-        <h2 class="section-title">Últimas Notícias</h2>
-        <div class="news-grid" id="newsGrid">
-            <!-- News items will be loaded here via JS -->
-            <div class="loading-news">Carregando notícias do Habbo...</div>
+    <!-- News Portal Section -->
+    <section id="news-portal" class="news-portal-section">
+        <div class="news-portal-wrapper">
+            <!-- 1. Featured Slider (Left) -->
+            <div class="portal-slider">
+                <div class="slider-wrapper" id="heroSlider">
+                    <!-- Slides loaded via JS -->
+                    <div class="loading-slider">Carregando Destaques...</div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
+                    <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
+                </div>
+                <div class="slider-indicators" id="sliderIndicators"></div>
+            </div>
+
+            <!-- 2. Latest News List (Center) -->
+            <div class="portal-latest">
+                <h3 class="portal-title"><i class="fas fa-newspaper"></i> Últimas Notícias</h3>
+                <div class="latest-list" id="latestList">
+                    <!-- List items loaded via JS -->
+                    <div class="loading-news">Carregando...</div>
+                </div>
+            </div>
+
+            <!-- 3. Partners Widget (Right) -->
+            <div class="portal-partners">
+                <h3 class="portal-title"><i class="fas fa-handshake"></i> Parceiros</h3>
+                <div class="partners-grid" id="partnersGrid">
+                    <!-- Partners loaded via JS -->
+                    <div class="partner-card">
+                        <div class="partner-icon"><i class="fas fa-shield-alt"></i></div>
+                        <span>Polícia RPM</span>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon"><i class="fas fa-music"></i></div>
+                        <span>Balada Beach</span>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon"><i class="fas fa-building"></i></div>
+                        <span>Arquitetos</span>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon"><i class="fas fa-gamepad"></i></div>
+                        <span>Eventos</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

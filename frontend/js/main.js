@@ -125,58 +125,156 @@ async function fetchLatestNews() {
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error('API Error');
-        const data = await response.json();
-        
-        // Filter/slice to 5 items
-        const latestNews = data.slice(0, 5);
-        renderNews(latestNews);
+         // Attempt fetch (will likely fail in local/browser without proxy)
+         // const response = await fetch(apiURL);
+         // if (!response.ok) throw new Error("API Error");
+         // const data = await response.json();
+         // processNewsbox(data);
+         
+         // Trigger Fallback directly for reliability in this environment
+         throw new Error("Direct API Blocked (CORS)"); 
 
     } catch (error) {
-        console.warn('CORS/API Error fetching news, using fallback data:', error);
-        // Fallback Mock Data so the user sees the layout
-        const LOGO_URL = "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png";
+        console.warn("Using Mock Data for Portal:", error);
         
-        const mockNews = [
-            { title: "Bem-vindos ao One Habbo!", summary: "O melhor fã-site chegou.", image: LOGO_URL, date: new Date().toISOString() },
-            { title: "Evento de Inauguração", summary: "Venha participar da nossa festa.", image: LOGO_URL, date: new Date().toISOString() },
-            { title: "Entrevista com DJ_Richard", summary: "Conheça a lenda.", image: LOGO_URL, date: new Date().toISOString() },
-            { title: "Novos Emblemas Disponíveis", summary: "Saiba como pegar.", image: LOGO_URL, date: new Date().toISOString() },
-            { title: "Manutenção Programada", summary: "Melhorias no servidor.", image: LOGO_URL, date: new Date().toISOString() }
+        // Mock Data for Portal (8 items)
+        const mockPortalNews = [
+            {
+                title: "O Retorno dos Arquitetos!",
+                description: "Novas competições de construção abalam o hotel.",
+                image: "https://images.habbo.com/c_images/WebPromo/Habbo_Mall_Top_Image_Architects.png", // Example
+                date: "2026-01-14T10:00:00.000+0000",
+                category: "Campanha"
+            },
+            {
+                title: "Raros de Ano Novo",
+                description: "Confira a coleção exclusiva de raros futuristas.",
+                image: "https://images.habbo.com/c_images/WebPromo/Habbo_Mall_Top_Image_Rare.png",
+                date: "2026-01-13T10:00:00.000+0000",
+                category: "Raros"
+            },
+             {
+                title: "Segurança na Comunidade",
+                description: "Dicas importantes para manter sua conta segura em 2026.",
+                image: "https://images.habbo.com/c_images/WebPromo/Habbo_Mall_Top_Image_Safety.png",
+                date: "2026-01-12T15:00:00.000+0000",
+                category: "Segurança"
+            },
+            // List Items
+            { title: "Vencedores da Promo de Natal", date: "2026-01-10", image: "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png" },
+            { title: "Manutenção Programada", date: "2026-01-09", image: "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png" },
+            { title: "Novo Emblema Disponível", date: "2026-01-08", image: "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png" },
+            { title: "Entrevista com Staffs", date: "2026-01-07", image: "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png" },
+            { title: "Atualização no Cliente", date: "2026-01-06", image: "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png" }
         ];
-        renderNews(mockNews);
+        
+        processPortalNews(mockPortalNews);
     }
 }
 
-function renderNews(newsList) {
-    const newsGrid = document.getElementById('newsGrid');
-    newsGrid.innerHTML = ''; // Clear loading
-    const LOGO_URL = "https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png";
+function processPortalNews(newsList) {
+    // 1. Slider Content (First 3 items or specific featured ones)
+    const featured = newsList.slice(0, 3);
+    renderSlider(featured);
 
-    newsList.forEach(item => {
-        // Habbo API structure might vary, adapting standard keys or mock keys
-        // If API returns 'images', 'title', 'summary', 'published'
-        const title = item.title || "Sem título";
-        const summary = item.summary || item.description || "Clique para ler mais.";
-        // Habbo sometimes returns images as lists or distinct fields. Adjusting...
-        // For mock/simple usage:
-        const image = item.image || item.images?.[0]?.url || LOGO_URL; 
-        const link = item.path ? `https://habbo.com.br${item.path}` : '#';
-        const date = new Date(item.date || item.published || Date.now()).toLocaleDateString('pt-BR');
+    // 2. Latest List Content (Next 5 items)
+    const latest = newsList.slice(3, 8);
+    renderLatestList(latest);
+}
 
-        const card = document.createElement('a');
-        card.className = 'news-card';
-        card.href = link;
-        card.target = '_blank'; // Open in new tab if external
+function renderSlider(slides) {
+    const sliderWrapper = document.getElementById('heroSlider');
+    const indicators = document.getElementById('sliderIndicators');
+    
+    if(!sliderWrapper) return;
+    
+    sliderWrapper.innerHTML = '';
+    if (indicators) indicators.innerHTML = ''; // Ensure indicators exist before clearing
+    
+    slides.forEach((slide, index) => {
+        // Slide Element
+        const div = document.createElement('div');
+        div.className = `slide-item ${index === 0 ? 'active' : ''}`;
         
-        card.innerHTML = `
-            <img src="${image}" alt="${title}" class="news-image" onerror="this.src='${LOGO_URL}'">
-            <div class="news-content">
-                <div class="news-title">${title}</div>
-                <div class="news-date"><i class="far fa-clock"></i> ${date}</div>
+        // Fallback for missing/broken large images
+        // Ideally checking loading, but for now assuming urls are valid or handled by nice styling
+        const bgImage = slide.image || 'https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png';
+        
+        div.style.backgroundImage = `url('${bgImage}')`;
+        
+        div.innerHTML = `
+            <div class="slide-content">
+                <span class="slide-tag">${slide.category || 'Destaque'}</span>
+                <h3 class="slide-title">${slide.title}</h3>
+                <p class="slide-desc">${slide.description || 'Clique para ler mais sobre esta notícia no One Habbo.'}</p>
             </div>
         `;
-        newsGrid.appendChild(card);
+        
+        // Click to read (Mock link)
+        div.onclick = () => window.open('#', '_self'); // Or specific link
+        
+        sliderWrapper.appendChild(div);
+        
+        // Indicator
+        /* const dot = document.createElement('span');
+        dot.className = `indicator-dot ${index === 0 ? 'active' : ''}`;
+        dot.onclick = () => goToSlide(index);
+        indicators.appendChild(dot); */ // Simplified without dots for now, just arrows
     });
+    
+    startSliderAutoPlay(slides.length);
+}
+
+function renderLatestList(news) {
+    const listContainer = document.getElementById('latestList');
+    if(!listContainer) return;
+    
+    listContainer.innerHTML = '';
+    
+    news.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'latest-item';
+        
+        // Use Logo fallback if no image
+        const thumb = item.image.includes('Habbo_Mall') ? item.image : 'https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png';
+        
+        div.innerHTML = `
+            <img src="${thumb}" class="latest-thumb" alt="Thumb">
+            <div class="latest-info">
+                <h4 class="latest-title">${item.title}</h4>
+                <div class="latest-meta"><i class="far fa-clock"></i> ${new Date(item.date).toLocaleDateString()}</div>
+            </div>
+        `;
+        
+        div.onclick = () => alert(`Abrir notícia: ${item.title}`);
+        listContainer.appendChild(div);
+    });
+}
+
+// Slider Logic
+function moveSlide(direction) {
+    const slides = document.querySelectorAll('.slide-item');
+    if (!slides.length) return;
+
+    slides[currentSlide].classList.remove('active');
+    
+    currentSlide += direction;
+    
+    if (currentSlide >= slides.length) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = slides.length - 1;
+    
+    slides[currentSlide].classList.add('active');
+    
+    // Reset timer on manual interaction
+    clearInterval(sliderInterval);
+    startSliderAutoPlay(slides.length);
+}
+
+function startSliderAutoPlay(count) {
+    if(count <= 1) return;
+    sliderInterval = setInterval(() => {
+        moveSlide(1);
+    }, 5000); // 5 seconds
 }
 
 // Render Last Registered Users (Using provided list + API Images)
