@@ -125,6 +125,10 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
+.mobile-menu-btn {
+    display: none;
+}
+
 .nav-links {
     display: flex;
     gap: 30px;
@@ -505,7 +509,6 @@ a {
     display: none; /* Hide old if still present */
 }
 /* Mobile Responsiveness */
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
     /* Stack Cloud Section */
     .cloud-section {
@@ -616,7 +619,4 @@ a {
     }
 }
 
-/* Desktop default for menu button */
-.mobile-menu-btn {
-    display: none;
-}
+
