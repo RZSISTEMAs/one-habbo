@@ -277,6 +277,65 @@ function startSliderAutoPlay(count) {
     }, 5000); // 5 seconds
 }
 
+// --- Badge Store Logic ---
+function fetchBadgeStore() {
+    const storeGrid = document.getElementById('badgeGrid');
+    if(!storeGrid) return;
+
+    // Badges usually come from habbo-imaging or local assets. 
+    // Using standard Habbo badge codes/urls for demo.
+    // Base URL: https://images.habbo.com/c_images/album1584/{CODE}.png
+    
+    // Mock Data
+    const badges = [
+        { code: "ADM", name: "Administrador", desc: "Soberania suprema.", price: 9999 },
+        { code: "NWB", name: "Novato", desc: "Bem-vindo ao One Habbo!", price: 0 },
+        { code: "UK183", name: "Festa Neon", desc: "Você brilhou na pista.", price: 50 },
+        { code: "DE40A", name: "Construtor", desc: "Mestre dos blocos.", price: 150 },
+        { code: "IT865", name: "VIP Gold", desc: "Acesso exclusivo.", price: 500 },
+        { code: "US078", name: "Segurança", desc: "Protegendo o hotel.", price: 75 },
+        { code: "BR968", name: "Carnaval", desc: "Samba no pé.", price: 120 },
+        { code: "FR016", name: "Romântico", desc: "Love is in the air.", price: 80 }
+    ];
+
+    setTimeout(() => {
+        renderStore(badges);
+    }, 1000); // Simulate network delay
+}
+
+function renderStore(items) {
+    const storeGrid = document.getElementById('badgeGrid');
+    if(!storeGrid) return;
+    storeGrid.innerHTML = '';
+
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'badge-card';
+        
+        // Construct Image URL - Using .gif for animated badges if available, or .png
+        // Official source often .gif
+        const imgUrl = `https://images.habbo.com/c_images/album1584/${item.code}.gif`;
+
+        card.innerHTML = `
+            <div class="badge-frame">
+                <img src="${imgUrl}" alt="${item.name}" class="badge-img" onerror="this.src='https://raw.githubusercontent.com/RZSISTEMAs/one-habbo/refs/heads/master/img/logo_transparente-removebg-preview.png'">
+            </div>
+            <div class="badge-info">
+                <h4>${item.name}</h4>
+                <div class="badge-desc">${item.desc}</div>
+                <div class="badge-price"><i class="fas fa-coins"></i> ${item.price}</div>
+            </div>
+            <button class="buy-btn" onclick="buyBadge('${item.name}')">Comprar</button>
+        `;
+        
+        storeGrid.appendChild(card);
+    });
+}
+
+function buyBadge(name) {
+    alert(`Você comprou o emblema: ${name}! (Simulação)`);
+}
+
 // Render Last Registered Users (Using provided list + API Images)
 function renderLastRegisteredUsers() {
     const userGrid = document.getElementById('lastRegisteredGrid');
@@ -313,5 +372,6 @@ function renderLastRegisteredUsers() {
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     fetchLatestNews();
+    fetchBadgeStore();
     renderLastRegisteredUsers();
 });
