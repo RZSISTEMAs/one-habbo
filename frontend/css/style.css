@@ -1157,8 +1157,48 @@ body {
 }
 
 [data-theme="light"] .main-footer {
-    background: #e2e8f0;
-    color: #475569;
+    background: #fdf6e3; /* Creamy golden footer */
+    color: #5d4037; /* Dark brown text */
+    border-top-color: rgba(218, 165, 32, 0.3);
+}
+
+/* Golden Theme Overrides for Dark-by-default components */
+[data-theme="light"] .music-item,
+[data-theme="light"] .forum-card,
+[data-theme="light"] .ranking-card,
+[data-theme="light"] .awards-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(218, 165, 32, 0.3);
+    color: var(--text-color);
+}
+
+[data-theme="light"] .music-item:hover,
+[data-theme="light"] .forum-card:hover,
+[data-theme="light"] .ranking-card:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #daa520; /* GoldenRod */
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.2);
+}
+
+[data-theme="light"] .music-song {
+    color: #3e2723; /* Very dark brown for song titles */
+}
+
+[data-theme="light"] .music-artist {
+    color: #d84315; /* Burnt orange for artists */
+}
+
+[data-theme="light"] .rank-number {
+    color: rgba(218, 165, 32, 0.15); /* Golden watermark */
+    text-shadow: none;
+}
+
+[data-theme="light"] .ranking-user-name {
+    color: #5d4037;
+}
+
+[data-theme="light"] .ranking-stat {
+    color: #8d6e63;
 }
 
 .footer-upper {
