@@ -99,11 +99,12 @@ body {
 }
 
 .cloud-logo {
-    position: relative; /* Changed from absolute to flow with flexbox space-between */
-    right: auto;
-    height: 220px;
+    position: absolute; /* Absolute for precise "legs on navbar" placement */
+    bottom: -10px; /* Slight overlap with navbar for anchored look */
+    right: 30%; /* Move towards center (was roughly 10% via padding) */
+    height: 290px; /* Increased from 220px */
     object-fit: contain;
-    z-index: 2;
+    z-index: 10; /* Ensure it's above navbar if overlapping */
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
     animation: floatLogo 3s ease-in-out infinite;
 }
