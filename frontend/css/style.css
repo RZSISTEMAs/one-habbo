@@ -200,8 +200,134 @@ body {
 
 /* ... existing media query ... */
 
+/* --- Ranking Section --- */
+.ranking-section {
+    padding-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
 
-/* --- Forum Section --- */
+.ranking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.ranking-card {
+    background: #0f172a; /* Darker base */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+    display: flex;
+    flex-direction: column;
+    height: 350px; /* Fixed height for consistency */
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.rank-header {
+    background: rgba(30, 41, 59, 0.5);
+    padding: 15px;
+    border-bottom: 2px solid #3b82f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rank-header h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #3b82f6; /* Blue text */
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.animated-cog {
+    color: #475569;
+    font-size: 1.1rem;
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.rank-body {
+    flex-grow: 1;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
+
+.rank-number {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+}
+
+.rank-avatar img {
+    height: 120px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+    transition: transform 0.3s;
+}
+
+.ranking-card:hover .rank-avatar img {
+    transform: scale(1.1);
+}
+
+.rank-info {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.rank-username {
+    display: block;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.rank-stat {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.rank-btn {
+    width: 100%;
+    padding: 15px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.rank-btn:hover {
+    background: #2563eb;
+}
+
+@media (max-width: 900px) {
+    .ranking-grid {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+}
 .forum-section {
     padding-bottom: 40px;
     max-width: 1200px;
