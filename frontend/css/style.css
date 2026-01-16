@@ -1201,6 +1201,35 @@ body {
     color: #8d6e63;
 }
 
+[data-theme="light"] .ranking-header h4 {
+    color: #4a3e28;
+}
+
+[data-theme="light"] .ranking-header i {
+    color: #d4a017; /* Golden icon */
+}
+
+/* Force Ranking Number Color Overrides */
+[data-theme="light"] .ranking-number {
+    color: rgba(218, 165, 32, 0.2) !important;
+}
+
+[data-theme="light"] .ranking-user-name {
+    color: #3e2723;
+}
+[data-theme="light"] .ranking-user-meta {
+    color: #5d4037;
+}
+
+[data-theme="light"] .see-full-list-btn {
+    background: linear-gradient(90deg, #d4a017, #b8860b);
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(218, 165, 32, 0.3);
+}
+[data-theme="light"] .see-full-list-btn:hover {
+    background: linear-gradient(90deg, #b8860b, #daa520);
+}
+
 .footer-upper {
     max-width: 1200px;
     margin: 0 auto;
