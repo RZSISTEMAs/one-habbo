@@ -476,114 +476,15 @@ body {
 
 
 
-/* -- Awards Card Refined -- */
-.awards-card {
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px; /* Softer rounded corners */
-    padding: 25px; /* More breathing room */
-    height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Deep soft shadow */
-    backdrop-filter: blur(10px);
-}
 
-.awards-body {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Better spacing */
-}
-
-.award-question {
-    color: #60a5fa; /* Softer blue */
-    font-weight: 700;
-    font-size: 1rem;
-    margin: 0;
-    line-height: 1.4;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.award-value {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.85rem;
-    color: #e2e8f0; /* Softer white */
-    gap: 2px;
-}
-
-.award-hint {
+.badge-secondary {
+    background: rgba(255, 255, 255, 0.1);
     color: #94a3b8;
-    font-size: 0.75rem;
-    font-style: italic;
-    opacity: 0.8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.award-input-group {
-    position: relative;
-    transition: transform 0.2s ease;
-}
-.award-input-group:focus-within {
-    transform: translateY(-2px);
-}
-
-.award-input {
-    width: 100%;
-    background: rgba(2, 6, 23, 0.6); /* Semi-transparent input */
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    color: white;
-    padding: 12px 15px;
-    border-radius: 8px;
-    padding-right: 40px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.award-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    background: rgba(2, 6, 23, 0.8);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
-}
-
-.input-icon {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #64748b;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: color 0.3s;
-}
-
-.award-input:focus + .input-icon {
-    color: #3b82f6;
-}
-
-.award-btn {
-    background: linear-gradient(90deg, #22c55e, #16a34a); /* Gradient Green */
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 800;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(34, 197, 94, 0.2);
-    letter-spacing: 0.5px;
-}
-
-.award-btn:hover {
-    background: linear-gradient(90deg, #4ade80, #22c55e); /* Brighter on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(34, 197, 94, 0.3);
-}
-
-.award-btn:active {
-    transform: translateY(0);
+.music-secondary-col .music-item {
+    padding: 12px 15px; /* Slightly taller for list emphasis */
 }
 
 /* Responsive */
@@ -594,8 +495,9 @@ body {
     .music-content-wrapper {
         grid-template-columns: 1fr; /* Stack Highlight and List on mobile */
     }
-    .awards-card {
-        height: auto; /* Allow auto height on stack */
+    /* Vertical Chart adapts to full width */
+    .vertical-chart {
+        margin-top: 15px;
     }
 }
 .forum-section {
