@@ -376,3 +376,53 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchBadgeStore();
     renderLastRegisteredUsers();
 });
+// ... existing code ...
+
+// Dynamic Login Avatar
+document.addEventListener('DOMContentLoaded', () => {
+    const loginInput = document.querySelector('.login-input[type="text"]');
+    const guestAvatar = document.querySelector('.guest-avatar img');
+    let timeout = null;
+
+    if (loginInput && guestAvatar) {
+        loginInput.addEventListener('input', (e) => {
+            const username = e.target.value.trim();
+            
+            // Clear existing timeout (debounce)
+            if (timeout) clearTimeout(timeout);
+
+            // Set new timeout to avoid spamming requests
+            timeout = setTimeout(() => {
+                if (username.length > 0) {
+                    // Update to user avatar
+                    // Using standardized Habbo params: region=br, head_direction=3, gesture=std, size=l
+                    const newSrc = `https://www.habbo.com.br/habbo-imaging/avatarimage?user=${username}&direction=4&head_direction=3&gesture=std&size=l`;
+                    
+                    // Create a temp image to check if it loads (optional, but good for UX)
+                    // limit flickering by setting src directly
+                    guestAvatar.style.opacity = '0.5'; // Visual cue loading
+                    
+                    const img = new Image();
+                    img.onload = () => {
+                        guestAvatar.src = newSrc;
+                        guestAvatar.style.opacity = '1';
+                        guestAvatar.style.filter = 'grayscale(0%)'; // Remove ghost effect
+                    };
+                    img.onerror = () => {
+                        // Keep or revert if failed? Let's revert to ghost if not found
+                        guestAvatar.src = 'https://www.habbo.com.br/habbo-imaging/avatarimage?user=Misterios&direction=4&head_direction=3&gesture=std&size=l';
+                         guestAvatar.style.opacity = '0.7'; // Back to ghost opacity
+                         guestAvatar.style.filter = 'grayscale(100%)';
+                    };
+                    img.src = newSrc;
+
+                } else {
+                    // Revert to Guest Avatar
+                    guestAvatar.src = 'https://www.habbo.com.br/habbo-imaging/avatarimage?user=Misterios&direction=4&head_direction=3&gesture=std&size=l';
+                    guestAvatar.style.opacity = '0.7';
+                    guestAvatar.style.filter = 'grayscale(100%)';
+                }
+            }, 500); // 500ms delay
+        });
+    }
+});
