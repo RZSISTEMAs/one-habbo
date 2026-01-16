@@ -1221,6 +1221,26 @@ body {
     color: #5d4037;
 }
 
+/* Specific Ranking Sub-elements Overrides */
+[data-theme="light"] .rank-header {
+    background: rgba(255, 253, 240, 0.9); /* Creamy tint */
+    border-bottom: 2px solid #daa520;
+}
+
+[data-theme="light"] .rank-body {
+    background: linear-gradient(to bottom, #fff8e1, #fff5d7); /* Golden gradient */
+}
+
+[data-theme="light"] .rank-btn {
+    background: linear-gradient(90deg, #d4a017, #b8860b);
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(218, 165, 32, 0.3);
+}
+
+[data-theme="light"] .rank-btn:hover {
+    background: linear-gradient(90deg, #b8860b, #daa520);
+}
+
 [data-theme="light"] .see-full-list-btn {
     background: linear-gradient(90deg, #d4a017, #b8860b);
     color: #fff;
