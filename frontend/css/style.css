@@ -103,7 +103,7 @@ body {
     bottom: -10px; /* Slight overlap with navbar for anchored look */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Adjust for own width */
-    height: 290px; /* Keep increased size */
+    height: 250px; /* Decreased from 290px */
     object-fit: contain;
     z-index: 10; /* Ensure it's above navbar if overlapping */
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
