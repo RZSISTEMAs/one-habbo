@@ -5,14 +5,16 @@
     --border-color: rgba(255, 255, 255, 0.1);
     --player-bg: rgba(0, 0, 0, 0.2); /* Dark mode player bg */
     --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --cloud-gradient-end: rgba(59, 130, 246, 0.2); /* Blueish for dark mode */
 }
 
 [data-theme="light"] {
-    --bg-color: #e2e8f0; /* Slightly darker grey for better contrast with white cards */
-    --text-color: #0f172a; /* Very dark blue/black */
-    --card-bg: rgba(255, 255, 255, 0.95); /* Opaque white */
-    --border-color: rgba(0, 0, 0, 0.1);
-    --player-bg: rgba(0, 0, 0, 0.05); /* Light mode player bg */
+    --bg-color: #fff8e1; /* Pale Amber/Gold background */
+    --text-color: #4a3e28; /* Dark Golden-Brown text */
+    --card-bg: rgba(255, 253, 240, 0.95); /* Creamy white card */
+    --border-color: rgba(218, 165, 32, 0.2); /* GoldenRod border */
+    --player-bg: rgba(218, 165, 32, 0.1); /* Light Gold player bg */
+    --cloud-gradient-end: rgba(255, 193, 7, 0.3); /* Amber gradient end */
 }
 
 body {
@@ -30,7 +32,7 @@ body {
 .cloud-section {
     width: 100%;
     height: 250px; /* Increased height for content */
-    background: linear-gradient(180deg, var(--bg-color) 0%, rgba(59, 130, 246, 0.2) 100%);
+    background: linear-gradient(180deg, var(--bg-color) 0%, var(--cloud-gradient-end) 100%);
     display: flex;
     align-items: center;
     justify-content: space-between; /* Spread content left/right */
