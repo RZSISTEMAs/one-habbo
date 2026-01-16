@@ -98,6 +98,105 @@ body {
     gap: 10px;
     font-size: 0.8rem;
     margin-top: 5px;
+    margin-top: 5px;
+}
+
+.cloud-login-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 5;
+}
+
+.login-box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 15px 20px; /* Slightly more padding */
+}
+
+.login-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.login-input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: var(--text-color);
+    width: 100px;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+[data-theme="light"] .login-input {
+    background: rgba(255,255,255,0.6);
+    border-color: rgba(218, 165, 32, 0.3);
+    color: #5d4037;
+}
+
+.login-input:focus {
+    border-color: #3b82f6;
+    background: rgba(255,255,255,0.15);
+}
+
+.login-btn-icon {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+.login-btn-icon:hover {
+    transform: scale(1.1);
+}
+
+.login-links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    padding-left: 2px;
+}
+
+.register-link {
+    color: #4ade80; /* Green for register */
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.forgot-link {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+.guest-avatar img {
+    opacity: 0.7;
+    filter: grayscale(100%); /* Ghost effect */
+    transition: all 0.3s;
+}
+
+.cloud-login-right:hover .guest-avatar img {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+@media (max-width: 768px) {
+    .cloud-login-right {
+        display: none; /* Hide on mobile or stack? User didn't specify, but usually hidden or moved to hamburger */
+    }
 }
 
 .cloud-logo {
