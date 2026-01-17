@@ -1,35 +1,16 @@
 :root {
     --bg-color: #0f172a;
     --text-color: #f8fafc;
-    /* ... */
-}
-
-/* Global Reset */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-[data-theme="light"] {
-/* ... */
-}
-
-/* ... existing styles ... */
-
-.music-highlight {
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    height: 222px; /* Exact match: 4 items * 48px + 3 * 10px gap = 192+30 = 222px */
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
     --card-bg: rgba(30, 41, 59, 0.7);
     --border-color: rgba(255, 255, 255, 0.1);
     --player-bg: rgba(0, 0, 0, 0.2); /* Dark mode player bg */
     --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     --cloud-gradient-end: rgba(59, 130, 246, 0.2); /* Blueish for dark mode */
+}
+
+/* Global Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 [data-theme="light"] {
@@ -483,7 +464,7 @@ body {
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    height: 225px; /* Increased to 225px to match 4-item list height on the right */
+    height: 222px; /* Perfect alignment: 4 items (192px) + 3 gaps (30px) */
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
