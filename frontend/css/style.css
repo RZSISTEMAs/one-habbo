@@ -459,7 +459,7 @@ body {
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    height: 220px;
+    height: 225px; /* Increased to 225px to match 4-item list height on the right */
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
