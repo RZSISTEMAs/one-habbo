@@ -142,14 +142,53 @@
                     <p>One Habbo pode usar as marcas registradas e outras propriedades intelectuais do Habbo conforme permitido pela Política de Fã Sites do Habbo.</p>
                     <p class="copyright">&copy; 2026 One Habbo. Todos os direitos reservados.</p>
                 </div>
+                
+                <!-- Theme Toggle Moved Here -->
+                <div class="footer-toggle lower-toggle" onclick="toggleTheme()" title="Mudar Tema">
+                     <img src="https://github.com/RZSISTEMAs/one-habbo/blob/master/img/theme_icon.png?raw=true" alt="Mudar Tema">
+                     <span>Alternar Tema</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Theme Toggle Floating Button -->
-    <button class="theme-toggle-float" onclick="toggleTheme()">
-        <i class="fas fa-moon" id="themeIcon"></i>
-    </button>
+    <!-- Floating Audio Element (Shared) -->
+    <audio id="radioStream" src="https://stream.zeno.fm/g4n8218991zuv" preload="none"></audio>
+
+    <!-- Bottom Floating Player (Appears on Scroll) -->
+    <div class="radio-player" id="radioPlayer" onclick="if(this.classList.contains('minimized')) togglePlayerView()">
+      <button class="toggle-btn" onclick="event.stopPropagation(); togglePlayerView()" title="Minimizar/Maximizar">
+        <i class="fas fa-chevron-down" id="toggleIcon"></i>
+      </button>
+
+      <div class="listeners-count"><i class="fas fa-headphones"></i> 128</div>
+
+      <div class="dj-avatar">
+        <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?user=DJ_Richard&direction=3&head_direction=3&gesture=sml&action=wav&size=l" alt="Avatar DJ" />
+      </div>
+      <div class="player-info">
+        <span class="program-name">One Hits</span>
+        <span class="dj-name">DJ DJ_Richard</span>
+        <div class="vote-buttons">
+          <button class="vote-btn" onclick="vote('like')"><i class="fas fa-thumbs-up"></i></button>
+          <button class="vote-btn" onclick="vote('dislike')"><i class="fas fa-thumbs-down"></i></button>
+        </div>
+      </div>
+
+      <button class="request-btn" onclick="requestSong()">
+        <i class="fas fa-music"></i> <span class="btn-text">Pedir</span>
+      </button>
+
+      <div class="controls">
+        <a href="https://www.habbo.com.br/room/12345678" target="_blank" class="room-btn" title="Ir para o Quarto">
+          <i class="fas fa-door-open"></i>
+        </a>
+        <button class="play-btn" id="playBtn" onclick="toggleRadio()">
+          <i class="fas fa-play"></i>
+        </button>
+        <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.5" onchange="setVolume(this.value)" />
+      </div>
+    </div>
 
     <script src="js/main.js"></script>
   </body>
