@@ -2112,4 +2112,64 @@ a {
     opacity: 0.7;
 }
 
+/* --- Legal Pages Styles --- */
+.legal-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.legal-document {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.legal-document h1 {
+    font-size: 2rem;
+    color: #3b82f6; /* Blue accent */
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+}
+
+[data-theme="light"] .legal-document h1 {
+    color: #b8860b; /* Golden accent */
+    border-bottom-color: rgba(218, 165, 32, 0.3);
+}
+
+.legal-document h2 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.legal-document p, .legal-document ul {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.legal-document ul {
+    padding-left: 20px;
+}
+
+.legal-document li {
+    margin-bottom: 10px;
+}
+
+.legal-date {
+    display: block;
+    margin-top: 40px;
+    font-style: italic;
+    opacity: 0.6;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
 
