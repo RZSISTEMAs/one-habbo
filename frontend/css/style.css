@@ -1936,8 +1936,8 @@ a {
 .header-controls button {
     display: none; /* Hide old if still present */
 }
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
+/* Mobile and Tablet Responsiveness (Up to 1024px) */
+@media (max-width: 1024px) {
     /* Cloud Section Mobile Redesign */
     .cloud-section {
         flex-direction: column;
