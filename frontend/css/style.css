@@ -1938,123 +1938,160 @@ a {
 }
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    /* Stack Cloud Section */
+    /* Cloud Section Mobile Redesign */
     .cloud-section {
         flex-direction: column;
         height: auto;
-        padding: 30px 5%;
-        gap: 20px;
+        min-height: 300px; /* Ensure space for content */
+        padding: 40px 5% 20px; /* More top padding */
+        gap: 25px;
         text-align: center;
-        justify-content: center;
+        justify-content: flex-start;
+        background: linear-gradient(180deg, var(--bg-color) 0%, var(--cloud-gradient-end) 100%);
     }
 
     .cloud-logo {
         position: relative;
-        height: 120px;
-        bottom: 0;
+        height: 100px; /* Smaller functional logo */
+        bottom: auto;
         left: auto;
         transform: none;
-        margin-bottom: 5px;
-        order: 1; /* Logo First */
+        margin: 0 auto;
+        order: 1;
+        animation: none; /* Disable float to save space/distraction */
+    }
+    
+    .cloud-logo:hover {
+        transform: scale(1.05); /* Simple scale on touch/hover */
     }
 
     .cloud-player-left {
         width: 100%;
         justify-content: center;
-        order: 2; /* Player Second */
+        flex-direction: row; /* Keep avatar next to info if it fits, or col if very small */
+        align-items: center;
+        gap: 15px;
+        order: 2;
+        background: rgba(0,0,0,0.2); /* distinct background */
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .cloud-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .cloud-avatar img {
+        height: 90px;
+        margin-top: -15px;
+    }
+
+    .cloud-info-box {
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        padding: 0;
+        min-width: auto;
+        text-align: left;
+    }
+    
+    .info-stats {
+        margin-top: 2px;
     }
 
     .cloud-login-right {
-        display: flex; /* Show login on mobile */
+        display: flex;
         width: 100%;
         justify-content: center;
-        order: 3; /* Login Third */
-        margin-top: 10px;
+        order: 3;
+        margin-top: 5px;
     }
 
     .login-box-container {
-        padding: 10px;
-        background: rgba(0,0,0,0.2);
-        border-radius: 10px;
+        width: 100%;
+        max-width: 350px; /* Prevent stretching too wide */
+        padding: 15px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .login-form {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .login-input {
+        width: 42%; /* Share space */
     }
 
     /* Navbar - Hamburger Menu */
     .main-navbar {
-        justify-content: space-between;
+        height: 60px;
         padding: 0 20px;
+        justify-content: space-between; /* Logo/Home left (if any), Menu right */
     }
 
     .mobile-menu-btn {
-        display: block;
-        font-size: 1.5rem;
+        display: flex; /* Flex to center icon */
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
         color: var(--text-color);
         cursor: pointer;
+        width: 44px; /* Touch target */
+        height: 44px;
     }
 
     .nav-links {
-        position: absolute;
+        position: fixed; /* Fixed to cover screen or stick to top */
         top: 60px;
         left: 0;
-        width: 100%;
-        background: var(--card-bg); /* Use theme variable */
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        border-bottom: 1px solid var(--border-color);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 980;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    
-    [data-theme="light"] .nav-links {
-        background: #fff8e1;
+        width: 100vw;
+        height: calc(100vh - 60px); /* Full screen menu */
+        background: var(--bg-color); /* Solid background for legibility */
+        padding: 40px 20px;
+        justify-content: flex-start;
+        gap: 20px;
+        transform: translateX(100%); /* Slide from right */
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: none;
     }
 
     .nav-links.nav-active {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     .nav-link {
-        width: 100%;
-        text-align: center;
+        font-size: 1.2rem; /* Larger text */
         padding: 15px;
-        border-radius: 0;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        background: transparent;
+    }
+    
+    /* Active/Hover state in mobile menu */
+    .nav-link:active {
+        background: var(--accent-gradient);
+        color: white;
     }
 
-    /* Adjust Bottom Player for Mobile */
+    /* Radio Player Mobile */
     .radio-player {
-        width: 95%; /* 95% Width for mobile */
+        width: calc(100% - 30px);
+        bottom: 15px;
+        border-radius: 12px;
         padding: 15px;
-        bottom: 10px;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-        border-radius: 20px;
-        max-width: none;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
     }
     
     .radio-player.minimized {
-        bottom: 80px; 
-        right: 10px;
-    }
-
-    .controls {
-        width: 100%;
-        justify-content: center;
-        gap: 1.5rem;
-    }
-    
-    .player-info {
-        align-items: center;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    
-    .vote-buttons {
-        justify-content: center;
+        bottom: 90px;
+        width: 60px;
+        right: 15px;
+        left: auto;
     }
 }
 
